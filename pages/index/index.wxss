@@ -1,0 +1,3 @@
+/**index.wxss**/
+@import '../../common/wxss/button_tab.wxss';
+@import '../../common/wxss/panel.wxss';
