@@ -1,4 +1,32 @@
+
 .panel {}
+.panel__hd {
+  padding: 20rpx 30rpx;
+  color: #999;
+  font-weight: 400;
+  font-size: 32rpx;
+  border-top: 1rpx solid #E5E5E5;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.panel__hd-item {
+  display: inline-flex;
+}
+.panel--href__color {
+  color: #ffa115;
+}
+.panel--href__icon {
+  position: relative;
+  top: -4rpx;
+  left: 0;
+  display: inline-flex;
+  margin-right: 6rpx;
+  width: 14rpx;
+  height: 14rpx;
+  border-width: 3rpx 3rpx 0 0;
+  border-color: #ffa115;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+}
 .panel__bd {
   border-bottom: 1rpx solid #E5E5E5;
 }

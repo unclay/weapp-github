@@ -1,0 +1,10 @@
+.cell {
+  display: flex;
+}
+.cell__parimary
+.cell__bd {
+  
+}
+.cell_ft {
+
+}

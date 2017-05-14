@@ -1,15 +1,22 @@
 <!--index.wxml-->
 <view class="container">
   <text>{{errText}}</text>
-  <view class="button-group" style="margin: 20rpx 80rpx 10rpx;">
-    <view bindtap="sinceTab" data-since="today" class="button-tab--item button-tab--item-first {{trending.since === 'today' ? 'active': ''}}">today</view>
-    <view bindtap="sinceTab" data-since="weekly" class="button-tab--item {{trending.since === 'weekly' ? 'active': ''}}">this week</view>
-    <view bindtap="sinceTab" data-since="monthly" class="button-tab--item button-tab--item-last {{trending.since === 'monthly' ? 'active': ''}}">this month</view>
-  </view>
-    
-    
+  
   <view class="panel">
-    <view class="panel__bd">
+    <view class="panel__hd">
+      <picker bindchange="onSinceChange" class="panel__hd-item" model="selector" value="{{trending.since.index}}" range="{{trending.since.range}}" range-key="name">
+        <text>Trengding for <text class="panel--href__color">{{trending.since.range[trending.since.index].name}}</text></text>
+        <text class="panel--href__icon"></text>
+      </picker>
+      <text> in </text>
+
+      <picker bindchange="onLanguageChange" class="panel__hd-item" model="selector" value="{{trending.language.index}}" range="{{trending.language.range}}" range-key="name">
+        <text class="panel--href__color">{{trending.language.range[trending.language.index].name}}</text>
+        <text class="panel--href__icon"></text>
+      </picker>
+    </view>
+    <view wx:if="{{trendingList.length === 0}}" class="panel__bd trending__null">{{trendingNullText}}</view>
+    <view wx:else class="panel__bd">
       <!-- <navigator class="media-box">
         <view class="media-box__bottom-line"></view>
         <view class="media-box__hd">

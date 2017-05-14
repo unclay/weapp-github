@@ -1,5 +1,4 @@
 /**app.wxss**/
-
 .text_star {
   font-size: 28rpx;
   font-weight: 600;
