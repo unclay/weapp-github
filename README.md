@@ -1,5 +1,5 @@
 # weapp-github
 Weapp Github
 
-![Trending](./common/screenshot/trending.jpg)
-![Trending Vue](./common/screenshot/trending_vue.jpg)
+<img src="./screenshot/trending.jpg" width="450">
+<img src="./screenshot/trending_vue.jpg" width="450">
