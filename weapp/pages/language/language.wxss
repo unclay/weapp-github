@@ -1,0 +1,55 @@
+/* select页面的搜索框 */
+.search-bar {
+  display: flex;
+  background-color: #EFEFF4;
+  padding: 16rpx 20rpx;
+}
+.search-bar__form {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 6rpx;
+  text-align: center;
+}
+.search-bar__input-toces {
+  height: 50rpx;
+}
+.search-bar__input-icon {
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.search-bar__input-toces--tips {
+  color: #999;
+  font-size: 24rpx;
+  display: inline-flex;
+  height: 100%;
+  line-height: 48rpx;
+  vertical-align: middle;
+}
+.search-bar__input {
+  display: inline-flex;
+}
+.search-bar__cancel-btn {
+  font-size: 28rpx;
+  color: #333;
+}
+
+
+/* 自定义select页面 */
+.page-select {
+  padding: 0 0 0 30rpx;
+}
+.page-select__item {
+  display: flex;
+  font-size: 30rpx;
+  color: #444;
+  border-bottom: 2rpx solid #eee;
+  align-items: center;
+}
+.page-select__item-name {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.page-select__item .active {
+  margin-right: 20rpx;
+}
