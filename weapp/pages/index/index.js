@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
-const { since, language } = require('../store/index');
+const { since, language, state } = require('../store/index');
 const {
   request,
   downloadFile,
@@ -20,8 +20,8 @@ Page({
         range: since
       },
       language: {
-        index: 0,
-        range: language
+        index: state.trending.language,
+        range: language,
       }
     },
     trendingList: [],
@@ -42,6 +42,16 @@ Page({
       trending: this.data.trending
     });
     this.getTrending();
+  },
+  showError(err, trendingNullText) {
+    const setdata = {
+      errText: String(err)
+    };
+    if (trendingNullText) {
+      setdata.trendingNullText = trendingNullText;
+    }
+    this.setData(setdata);
+    wx.hideLoading();
   },
   getTrending() {
     const self = this;
@@ -68,6 +78,9 @@ Page({
       url: 'https://www.unclay.com/cache',
       data: query
     }).then((res) => {
+      if (res.data.status && res.data.response) {
+        return this.showError(res.data.response.text, 'api error')
+      }
       if (!res.data || res.data.length === 0) {
         wx.hideLoading();
         return this.setData({
@@ -131,6 +144,18 @@ Page({
     });
   },
   onLoad: function () {
+    console.log('onload', state.trending.language)
+    // this.getTrending();
+  },
+  onReady() {
+    console.log('onready', state.trending.language);
+  },
+  onShow() {
+    this.data.trending.language.index = state.trending.language;
+    this.setData({
+      trending: this.data.trending
+    })
     this.getTrending();
+    console.log('onShow', state.trending.language);
   }
 })

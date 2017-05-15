@@ -1,4 +1,4 @@
-const { language } = require('../store/index');
+const { language, state } = require('../store/index');
 
 Page({
   data: {
@@ -8,9 +8,11 @@ Page({
     }
   },
   onSelectChange(e) {
+    state.trending.language = e.currentTarget.dataset.index;
     this.data.select.index = e.currentTarget.dataset.index
     this.setData({
       select: this.data.select
     })
+    wx.navigateBack();
   }
 })

@@ -1,6 +1,12 @@
 const since = require('./since');
 const language = require('./language');
+const state = {
+  trending: {
+    language: 0
+  }
+};
 module.exports = {
   since,
-  language
+  language,
+  state
 }

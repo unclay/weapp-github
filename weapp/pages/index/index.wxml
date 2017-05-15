@@ -10,10 +10,14 @@
       </picker>
       <text> in </text>
 
-      <picker bindchange="onLanguageChange" class="panel__hd-item" model="selector" value="{{trending.language.index}}" range="{{trending.language.range}}" range-key="name">
+      <navigator style="display: inline-block;" url="/pages/language/language">
         <text class="panel--href__color">{{trending.language.range[trending.language.index].name}}</text>
         <text class="panel--href__icon"></text>
-      </picker>
+      </navigator>
+      <!-- <picker bindchange="onLanguageChange" class="panel__hd-item" model="selector" value="{{trending.language.index}}" range="{{trending.language.range}}" range-key="name">
+        <text class="panel--href__color">{{trending.language.range[trending.language.index].name}}</text>
+        <text class="panel--href__icon"></text>
+      </picker> -->
     </view>
     <view wx:if="{{trendingList.length === 0}}" class="panel__bd trending__null">{{trendingNullText}}</view>
     <view wx:else class="panel__bd">
