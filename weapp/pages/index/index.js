@@ -9,11 +9,6 @@ const {
 } = require('../../common/js/promise_api.js');
 Page({
   data: {
-    sinceRange: {
-      today: 'today',
-      weekly: 'this week',
-      monthly: 'this month'
-    },
     trending: {
       since: {
         index: 0,
@@ -45,7 +40,7 @@ Page({
   },
   showError(err, trendingNullText) {
     const setdata = {
-      errText: String(err)
+      errText: String(JSON.stringify(err))
     };
     if (trendingNullText) {
       setdata.trendingNullText = trendingNullText;
@@ -62,8 +57,10 @@ Page({
       languageValue = `/${languageValue}`
     }
     const query = {
-      url: `http://anly.leanapp.cn/api/github/trending${languageValue}`,
+      url: 'http://trending.codehub-app.com/v2/trending',
       since: since.range[since.index].value,
+      language: languageValue,
+      expire: 3000
     };
     // 每次请求提示加载中
     wx.showLoading({
@@ -92,7 +89,7 @@ Page({
       const storeAvatars = wx.getStorageSync('avatars') || {};
       let fileIndex = 0;
       const loopDownload = (cb) => {
-        const url = res.data[fileIndex].avatar;
+        const url = res.data[fileIndex].owner.avatar_url;
         if (fileIndex >= 5) {
           return cb();
         }
@@ -101,14 +98,14 @@ Page({
         }
         // 从微信下载
         downloadFile({
-          url: res.data[fileIndex].avatar
+          url: res.data[fileIndex].owner.avatar_url
         }).then((downloadFileRes) => {
           // 保存到本地
           return saveFile({
             tempFilePath: downloadFileRes.tempFilePath
           });
         }).then((saveFileRes) => {
-          storeAvatars[res.data[fileIndex].avatar] = saveFileRes.savedFilePath;
+          storeAvatars[res.data[fileIndex].owner.avatar_url] = saveFileRes.savedFilePath;
           fileIndex++;
           loopDownload(cb);
         }).catch((err) => {
@@ -131,24 +128,29 @@ Page({
       for (let i = 0; i < res.data.length; i++) {
         res.data[i].avatar = storeAvatars[res.data[i].avatar] || res.data[i].avatar;
       }
-
+      function fomatFloat(src, pos){
+        return Math.round(src*Math.pow(10, pos))/Math.pow(10, pos);
+      }
       self.setData({
-        trendingList: res.data
+        errText: '',
+        trendingList: res.data.map((item) => {
+          if (item.stargazers_count >= 1000) {
+            item.stargazers_count = fomatFloat(item.stargazers_count/1000, 1) + 'k'
+          }
+          return item
+        })
       })
       wx.hideLoading();
     }).catch((err) => {
-      self.setData({
-        errText: String(err)
-      })
+      this.showError(err && err.errMsg, 'api error')
       wx.hideLoading();
     });
   },
   onLoad: function () {
-    console.log('onload', state.trending.language)
-    // this.getTrending();
+    // console.log('onload', state.trending.language)
   },
   onReady() {
-    console.log('onready', state.trending.language);
+    // console.log('onready', state.trending.language);
   },
   onShow() {
     this.data.trending.language.index = state.trending.language;
@@ -156,6 +158,6 @@ Page({
       trending: this.data.trending
     })
     this.getTrending();
-    console.log('onShow', state.trending.language);
+    // console.log('onqShow', state.trending.language);
   }
 })

@@ -1,7 +1,11 @@
 <view>
   <view class="search-bar">
     <view class="search-bar__form">
-      <view class="search-bar__input-toces">
+      <view wx:if="{{select.focus}}" class="search-bar__box">
+        <icon class="search-bar__input-icon" type="search" size="13"></icon>
+        <input class="search-bar__input" focus="{{select.focus}}" type="text" placeholder="Search" placeholder-class="search-bar__input-placeholder" />
+      </view>
+      <view wx:else class="search-bar__input-toces" bindtap="onFocus">
         <icon class="search-bar__input-icon" type="search" size="13"></icon>
         <text class="search-bar__input-toces--tips">Search</text>
       </view>

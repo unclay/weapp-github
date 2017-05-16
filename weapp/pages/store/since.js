@@ -1,7 +1,7 @@
 module.exports = [
   {
     name: 'Today',
-    value: 'today',
+    value: 'daily',
   },
   {
     name: 'This Week',

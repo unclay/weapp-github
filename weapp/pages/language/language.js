@@ -4,8 +4,15 @@ Page({
   data: {
     select: {
       options: language,
-      index: 0
+      index: state.trending.language || 0,
+      focus: false,
     }
+  },
+  onFocus() {
+    this.data.select.focus = true;
+    this.setData({
+      select: this.data.select,
+    });
   },
   onSelectChange(e) {
     state.trending.language = e.currentTarget.dataset.index;
@@ -14,5 +21,11 @@ Page({
       select: this.data.select
     })
     wx.navigateBack();
+  },
+  onShow() {
+    this.data.select.index = state.trending.language;
+    this.setData({
+      select: this.data.select
+    })
   }
 })
