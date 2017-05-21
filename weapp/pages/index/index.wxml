@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" style="background-color: #fff;">
   <text>{{errText}}</text>
   
   <view class="panel">
@@ -31,7 +31,7 @@
           <text class="media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</text>
         </view>
       </navigator> -->
-      <navigator wx:for="{{trendingList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="media-box">
+      <navigator url="/pages/repo/repo?name={{item.name}}&user={{item.owner.login}}" wx:for="{{trendingList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="media-box">
         <view class="media-box__bottom-line"></view>
         <view class="media-box__hd">
           <image class="media-box__thumb" src="{{item.owner.avatar_url}}"></image>

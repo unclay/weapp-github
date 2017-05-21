@@ -1,8 +1,5 @@
 /**index.wxss**/
-@import '../../common/wxss/button_tab.wxss';
-@import '../../common/wxss/cell.wxss';
-@import '../../common/wxss/flex.wxss';
-@import '../../common/wxss/panel.wxss';
+
 
 .trending__null {
   border-bottom:1rpx solid #E5E5E5;

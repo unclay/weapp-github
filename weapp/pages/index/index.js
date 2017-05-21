@@ -50,8 +50,8 @@ Page({
   },
   getTrending() {
     const self = this;
-    const since = this.data.trending.since;
-    const language = this.data.trending.language;
+    const since = self.data.trending.since;
+    const language = self.data.trending.language;
     let languageValue = language.range[language.index].value;
     if (languageValue) {
       languageValue = `/${languageValue}`
@@ -67,7 +67,7 @@ Page({
       title: 'loading...'
     });
     // 每次请求清空trending
-    this.setData({
+    self.setData({
       trendingList: [],
       trendingNullText: 'Loading...'
     })
@@ -76,11 +76,11 @@ Page({
       data: query
     }).then((res) => {
       if (res.data.status && res.data.response) {
-        return this.showError(res.data.response.text, 'api error')
+        return self.showError(res.data.response.text, 'api error')
       }
       if (!res.data || res.data.length === 0) {
         wx.hideLoading();
-        return this.setData({
+        return self.setData({
           trendingList: [],
           trendingNullText: 'We couldn’t find any trending repositories.'
         })
@@ -142,11 +142,14 @@ Page({
       })
       wx.hideLoading();
     }).catch((err) => {
-      this.showError(err && err.errMsg, 'api error')
+      self.showError(err && err.errMsg, 'api error')
       wx.hideLoading();
     });
   },
   onLoad: function () {
+    wx.setNavigationBarTitle({
+      title: 'Trending'
+    })
     // console.log('onload', state.trending.language)
   },
   onReady() {

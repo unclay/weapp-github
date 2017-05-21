@@ -1,0 +1,186 @@
+<view class="repo">
+  <view class="repo-hd">
+    <image class="repo-avatar" src="{{repo.owner.avatar_url}}"></image>
+    <view class="repo-name">{{repo.name}}</view>
+    <view class="repo-desc">{{repo.description}}</view>
+  </view>
+  <view class="repo-bd">
+    <view class="cells cells-notop">
+      <view class="flexbox">
+        <view class="flexbox-item__col3">
+          <view class="flexbox-border__right"></view>
+          <view class="repo-hotspot__value">{{repo.stargazers_count}}</view>
+          <view class="repo-hotspot__hint">Stargazers</view>
+        </view>
+        <view class="flexbox-item__col3">
+          <view class="flexbox-border__right"></view>
+          <view class="repo-hotspot__value">{{repo.subscribers_count}}</view>
+          <view class="repo-hotspot__hint">Watchers</view>
+        </view>
+        <view class="flexbox-item__col3">
+          <view class="flexbox-border__right"></view>
+          <view class="repo-hotspot__value">{{repo.forks_count}}</view>
+          <view class="repo-hotspot__hint">Forks</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="cells">
+      <view class="cell-before__full"></view>
+      <view class="flexbox">
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__right"></view>
+          <view class="flexbox-border__bottom"></view>
+          <view class="cell">
+            <view class="cell-hd">
+              <text class="iconfont icon-lock"></text>
+            </view>
+            <view class="cell-bd cell-primary">
+              {{private ? 'Private' : 'Public'}}
+            </view>
+          </view>
+        </view>
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__bottom"></view>
+          <view class="cell">
+            <view class="cell-hd">
+              <text class="iconfont icon-hezi"></text>
+            </view>
+            <view class="cell-bd cell-primary">
+              {{repo.language}}
+            </view>
+          </view>
+        </view>
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__right"></view>
+          <view class="flexbox-border__bottom"></view>
+          <view class="cell">
+            <view class="cell-hd">
+              <text class="iconfont icon-issue-opened"></text>
+            </view>
+            <view class="cell-bd cell-primary">
+              {{repo.open_issues}} Issues
+            </view>
+          </view>
+        </view>
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__bottom"></view>
+          <view class="cell">
+            <view class="cell-hd">
+              <text class="iconfont icon-flowbranch1157840easyiconnet"></text>
+            </view>
+            <view class="cell-bd cell-primary">
+              {{repo.branches_count}} Branchs
+            </view>
+          </view>
+        </view>
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__right"></view>
+          <view class="flexbox-border__bottom"></view>
+          <view class="cell">
+            <view class="cell-hd">
+              <text class="iconfont icon-riqi"></text>
+            </view>
+            <view class="cell-bd cell-primary">
+              {{repo.created_at}}
+            </view>
+          </view>
+        </view>
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__bottom"></view>
+          <view class="cell">
+            <view class="cell-hd">
+              <text class="iconfont icon-gongju"></text>
+            </view>
+            <view class="cell-bd cell-primary">
+              {{repo.size}}
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cell">
+        <view class="cell-hd">
+          <text class="iconfont icon-icon2"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Owner
+        </view>
+        <view class="cell-ft">
+          {{repo.owner.login}}
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <view class="cell-after__full"></view>
+    </view>
+
+    <view class="cells" style="display: block;">
+      <view class="cell-before__full"></view>
+      <view class="cell" style="display: none;">
+        <view class="cell-hd">
+          <text class="iconfont icon-issue-opened"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Issues
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <navigator url="/pages/readme/readme?name={{query.name}}&user={{query.user}}" class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-shu2"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Readme
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </navigator>
+      <view class="cell-after__full"></view>
+    </view>
+
+    <view class="cells" style="display: none;">
+      <view class="cell-before__full"></view>
+      <view class="cell">
+        <view class="cell-hd">
+          <text class="iconfont icon-gitcommit"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Commits
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <view class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-flowbranch1157840easyiconnet"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Pull Requests
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <view class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-source"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Source
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <view class="cell-after__full"></view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<import src="../wemark/wemark.wxml"/>
+<view class="readme">
+  <text>{{errText}}</text>
+  <template is="wemark" data="{{...wemark}}"></template>
+</view>
