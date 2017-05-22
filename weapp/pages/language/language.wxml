@@ -3,18 +3,19 @@
     <view class="search-bar__form">
       <view wx:if="{{select.focus}}" class="search-bar__box">
         <icon class="search-bar__input-icon" type="search" size="13"></icon>
-        <input class="search-bar__input" focus="{{select.focus}}" type="text" placeholder="Search" placeholder-class="search-bar__input-placeholder" />
+        <input class="search-bar__input" bindinput="onInputChange" focus="{{select.focus}}" type="text" placeholder="Search" placeholder-class="search-bar__input-placeholder" />
       </view>
       <view wx:else class="search-bar__input-toces" bindtap="onFocus">
         <icon class="search-bar__input-icon" type="search" size="13"></icon>
         <text class="search-bar__input-toces--tips">Search</text>
       </view>
     </view>
+    <navigator wx:if="{{select.focus}}" class="search-bar__btn-cancle" url="/pages/index/index" open-type="navigateBack">Cancel</navigator>
   </view>
   <view class="page-select">
     <view bindtap="onSelectChange" data-index="{{index}}" wx:for="{{select.options}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="page-select__item">
       <text class="page-select__item-name">{{item.name}}</text>
-      <icon wx:if="{{index === select.index}}" class="active" type="success_no_circle" size="16"></icon>
+      <icon wx:if="{{item.value === select.state.value}}" class="active" type="success_no_circle" size="16"></icon>
     </view>
   </view>
 </view>

@@ -15,7 +15,7 @@ Page({
         range: since
       },
       language: {
-        index: state.trending.language,
+        state: state.trending.language,
         range: language,
       }
     },
@@ -26,13 +26,6 @@ Page({
   //事件处理函数
   onSinceChange(e) {
     this.data.trending.since.index = e.detail.value;
-    this.setData({
-      trending: this.data.trending
-    });
-    this.getTrending();
-  },
-  onLanguageChange(e) {
-    this.data.trending.language.index = e.detail.value;
     this.setData({
       trending: this.data.trending
     });
@@ -52,14 +45,10 @@ Page({
     const self = this;
     const since = this.data.trending.since;
     const language = this.data.trending.language;
-    let languageValue = language.range[language.index].value;
-    if (languageValue) {
-      languageValue = `/${languageValue}`
-    }
     const query = {
       url: 'http://trending.codehub-app.com/v2/trending',
       since: since.range[since.index].value,
-      language: languageValue,
+      language: language.state.value,
       expire: 3000
     };
     // 每次请求提示加载中
@@ -85,6 +74,7 @@ Page({
           trendingNullText: 'We couldn’t find any trending repositories.'
         })
       }
+      // will remove image cache
       // 保存图片到本地，方便下次使用
       const storeAvatars = wx.getStorageSync('avatars') || {};
       let fileIndex = 0;
@@ -148,16 +138,19 @@ Page({
   },
   onLoad: function () {
     // console.log('onload', state.trending.language)
+    this.getTrending();
   },
   onReady() {
     // console.log('onready', state.trending.language);
   },
   onShow() {
-    this.data.trending.language.index = state.trending.language;
-    this.setData({
-      trending: this.data.trending
-    })
-    this.getTrending();
+    if (JSON.stringify(this.data.trending.language.state) !== JSON.stringify(state.trending.language)) {
+      this.data.trending.language.state = state.trending.language;
+      this.setData({
+        trending: this.data.trending
+      })
+      this.getTrending();
+    }
     // console.log('onqShow', state.trending.language);
   }
 })

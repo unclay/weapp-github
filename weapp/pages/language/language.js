@@ -4,9 +4,20 @@ Page({
   data: {
     select: {
       options: language,
-      index: state.trending.language || 0,
+      state: state.trending.language,
       focus: false,
     }
+  },
+  onInputChange(e) {
+    this.data.select.options = language.filter((item) => {
+      if (item.name.match(new RegExp(e.detail.value, 'gi'))) {
+        return item;
+      }
+    });
+    this.data.select.value = '';
+    this.setData({
+      select: this.data.select,
+    });
   },
   onFocus() {
     this.data.select.focus = true;
@@ -15,15 +26,15 @@ Page({
     });
   },
   onSelectChange(e) {
-    state.trending.language = e.currentTarget.dataset.index;
-    this.data.select.index = e.currentTarget.dataset.index
+    state.trending.language = this.data.select.options[e.currentTarget.dataset.index];
+    this.data.select.state = this.data.select.options[e.currentTarget.dataset.index];
     this.setData({
       select: this.data.select
     })
     wx.navigateBack();
   },
   onShow() {
-    this.data.select.index = state.trending.language;
+    this.data.select.state = state.trending.language;
     this.setData({
       select: this.data.select
     })
