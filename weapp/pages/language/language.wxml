@@ -1,4 +1,4 @@
-<view>
+<view style="background-color: #fff;">
   <view class="search-bar">
     <view class="search-bar__form">
       <view wx:if="{{select.focus}}" class="search-bar__box">

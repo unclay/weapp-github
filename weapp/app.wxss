@@ -1,4 +1,15 @@
 /**app.wxss**/
+
+@import './common/wxss/button_tab.wxss';
+@import './common/wxss/cell.wxss';
+@import './common/wxss/flex.wxss';
+@import './common/wxss/panel.wxss';
+@import './common/wxss/icon.wxss';
+
+page {
+  background-color: #efeff4;
+}
+
 .text_star {
   font-size: 28rpx;
   font-weight: 600;

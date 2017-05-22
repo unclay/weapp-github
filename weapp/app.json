@@ -1,12 +1,16 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/language/language"
+    "pages/language/language",
+    "pages/repo/repo",
+    "pages/readme/readme"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Trending",
-    "navigationBarTextStyle":"black"
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#37373b",
+    "navigationBarTitleText": "Github",
+    "navigationBarTextStyle":"#fff",
+    "backgroundColor": "#efeff4",
+    "enablePullDownRefresh": true
   }
 }

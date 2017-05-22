@@ -1,7 +1,50 @@
 .flexbox {
   display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
 }
 .flexbox-item {
-  display: flex;
+  position: relative;
   flex: 1;
+}
+.flexbox-item__col2 {
+  position: relative;
+  flex: 0 0 50%;
+}
+.flexbox-item__col3 {
+  position: relative;
+  flex: 0 0 33.33%;
+}
+
+.flexbox-border__top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-top: 2rpx solid #eee;
+  z-index: 1;
+}
+.flexbox-border__right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border-right: 2rpx solid #eee;
+  z-index: 1;
+}
+.flexbox-border__bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 2rpx solid #eee;
+  z-index: 1;
+}
+.flexbox-border__left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-left: 2rpx solid #eee;
+  z-index: 1;
 }

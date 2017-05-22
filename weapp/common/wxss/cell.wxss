@@ -1,10 +1,70 @@
-.cell {
-  display: flex;
+.cells {
+  position: relative;
+  margin-top: 30rpx;
 }
-.cell__parimary
-.cell__bd {
+.cells-notop {
+  margin-top: 0;
+}
+.cell {
+  position: relative;
+  display: flex;
+  padding: 20rpx 30rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+}
+.cell-before__full {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 2rpx;
+  color: #D9D9D9;
+  border-top: 2rpx solid #D9D9D9;
+  z-index: 1;
+}
+.cell-after__full {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2rpx;
+  color: #D9D9D9;
+  border-bottom: 2rpx solid #D9D9D9;
+  z-index: 1;
+}
+.cell-before {
+  position: absolute;
+  top: 0;
+  left: 30rpx;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #D9D9D9;
+}
+.cell-before__bd {
+  position: absolute;
+  top: 0;
+  left: 78rpx;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #D9D9D9;
+}
+
+.cell .iconfont {
+  margin-right: 15rpx;
+}
+.cell-hd {
   
 }
-.cell_ft {
-
+.cell-bd {
+  
+}
+.cell-ft {
+}
+.cell-ft .iconfont {
+  color: #999;
+}
+.cell-primary {
+  flex: 1;
 }
