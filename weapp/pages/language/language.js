@@ -8,6 +8,9 @@ Page({
       focus: false,
     }
   },
+  onPullDownRefresh() {
+    wx.stopPullDownRefresh();
+  },
   onInputChange(e) {
     this.data.select.options = language.filter((item) => {
       if (item.name.match(new RegExp(e.detail.value, 'gi'))) {

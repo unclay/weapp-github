@@ -7,6 +7,7 @@
   <view class="repo-bd">
     <view class="cells cells-notop">
       <view class="flexbox">
+        <view class="flexbox-border__bottom"></view>
         <view class="flexbox-item__col3">
           <view class="flexbox-border__right"></view>
           <view class="repo-hotspot__value">{{repo.stargazers_count}}</view>
@@ -18,7 +19,6 @@
           <view class="repo-hotspot__hint">Watchers</view>
         </view>
         <view class="flexbox-item__col3">
-          <view class="flexbox-border__right"></view>
           <view class="repo-hotspot__value">{{repo.forks_count}}</view>
           <view class="repo-hotspot__hint">Forks</view>
         </view>
@@ -107,8 +107,7 @@
           Owner
         </view>
         <view class="cell-ft">
-          {{repo.owner.login}}
-          <text class="iconfont icon-202-copy"></text>
+          <text style="padding-right: 20rpx;">{{repo.owner.login}}</text>
         </view>
       </view>
       <view class="cell-after__full"></view>

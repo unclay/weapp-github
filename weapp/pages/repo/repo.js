@@ -19,6 +19,12 @@ Date.prototype.Format = function(fmt) {
   return fmt;
 }
 Page({
+  onShareAppMessage() {
+    return {
+      title: `Github - ${this.data.query.user}/${this.data.query.name}`,
+      path: `/pages/repo/repo?name=${this.data.query.name}&user=${this.data.query.user}`,
+    }
+  },
   data: {
     query: {
       name: '',

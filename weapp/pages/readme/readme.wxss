@@ -2,7 +2,7 @@
 
 .readme {
   background-color: #fff;
-  padding: 1rpx 15rpx;
+  padding: 1rpx 30rpx;
 }
 page {
   background-color: #fff;

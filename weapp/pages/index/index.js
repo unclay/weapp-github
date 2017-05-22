@@ -8,6 +8,17 @@ const {
   saveFile
 } = require('../../common/js/promise_api.js');
 Page({
+  onShareAppMessage() {
+    return {
+      title: 'Github Trending',
+      path: '/pages/index/index',
+    }
+  },
+  onPullDownRefresh() {
+    this.getTrending(() => {
+      wx.stopPullDownRefresh();
+    });
+  },
   data: {
     trending: {
       since: {
@@ -41,14 +52,10 @@ Page({
     this.setData(setdata);
     wx.hideLoading();
   },
-  getTrending() {
+  getTrending(callback) {
     const self = this;
-    const since = self.data.trending.since;
-    const language = self.data.trending.language;
-    let languageValue = language.range[language.index].value;
-    if (languageValue) {
-      languageValue = `/${languageValue}`
-    }
+    const since = this.data.trending.since;
+    const language = this.data.trending.language;
     const query = {
       url: 'http://trending.codehub-app.com/v2/trending',
       since: since.range[since.index].value,
@@ -135,9 +142,11 @@ Page({
         })
       })
       wx.hideLoading();
+      callback && callback(null);
     }).catch((err) => {
       self.showError(err && err.errMsg, 'api error')
       wx.hideLoading();
+      callback && callback(err);
     });
   },
   onLoad: function () {

@@ -8,7 +8,7 @@
 .cell {
   position: relative;
   display: flex;
-  padding: 20rpx 30rpx;
+  padding: 20rpx 15rpx 20rpx 30rpx;
   height: 40rpx;
   line-height: 40rpx;
   font-size: 28rpx;
@@ -61,9 +61,16 @@
   
 }
 .cell-ft {
+  display: flex;
+  justify-content: center;
 }
 .cell-ft .iconfont {
   color: #999;
+}
+.cell-ft .icon-202-copy {
+  display: inline-block;
+  margin-top: 2rpx;
+  margin-left: 4rpx;
 }
 .cell-primary {
   flex: 1;
