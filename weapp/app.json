@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/language/language",
     "pages/repo/repo",
-    "pages/readme/readme"
+    "pages/readme/readme",
+    "pages/profile/profile"
   ],
   "window":{
     "backgroundTextStyle":"dark",

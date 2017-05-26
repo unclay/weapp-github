@@ -55,7 +55,7 @@ Page({
       url: 'https://www.unclay.com/cache',
       data: {
         url: `https://api.github.com/repos/${repos}`,
-        expire: 3000
+        expire: 60 * 60
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {
@@ -76,7 +76,7 @@ Page({
         url: 'https://www.unclay.com/cache',
         data: {
           url: `https://api.github.com/repos/${repos}/branches`,
-          expire: 3000
+          expire: 60 * 60
         }
       });
     }).then((res) => {
