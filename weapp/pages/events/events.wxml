@@ -14,7 +14,28 @@
         <view class="events-main__title">
           <text class="events-main__url">Clay</text> Starred <text class="events-main__url">airyland/VUX</text>
         </view>
-        <text class="events-main__content">asdfasdf</text>
+        <view class="events-main__content">asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view wx:for="{{events}}" wx:key="unique" wx:for-index="index" wx:for-item="item"  class="events-box">
+    <view class="events-tips">
+      <view class="events-tips__hd">
+        <text class="iconfont icon-xingxing events-xingxing"></text>
+      </view>
+      <view class="events-tips__bd events-tips__primary">{{item.created_at}}</view>
+    </view>
+    <view class="events-main">
+      <view class="events-main__hd">
+        <text class="iconfont icon-github events-github"></text>
+      </view>
+      <view class="events-main__bd events-main__primary">
+        <view class="events-main__title">
+          <text class="events-main__url">Clay</text> Starred <text class="events-main__url">airyland/VUX</text>
+        </view>
+        <view class="events-main__content">asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</view>
       </view>
     </view>
   </view>
