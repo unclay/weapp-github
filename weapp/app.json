@@ -4,7 +4,8 @@
     "pages/language/language",
     "pages/repo/repo",
     "pages/readme/readme",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/events/events"
   ],
   "window":{
     "backgroundTextStyle":"dark",

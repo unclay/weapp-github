@@ -1,0 +1,49 @@
+.events-xingxing {
+  display: inline-block;
+  width: 50rpx;
+  height: 50rpx;
+  font-size: 50rpx;
+}
+.events-github {
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  font-size: 80rpx;
+}
+.events-box {}
+.events-tips {
+  display: flex;
+}
+.events-tips__hd {
+  width: 80rpx;
+  text-align: right;
+  padding: 0 20rpx;
+}
+.events-tips__bd {
+  line-height:56rpx;
+  font-size: 28rpx;
+  color: #8E8E8E;
+}
+.events-tips__primary {
+  flex: 1;
+}
+.events-main {
+  display: flex;
+}
+.events-main__primary {
+  flex: 1;
+}
+.events-main__hd {
+  width: 80rpx;
+  padding: 0 20rpx;
+  
+}
+.events-main__bd {
+  font-size: 30rpx;
+  font-weight: 300;
+}
+.events-main__title {}
+.events-main__url {
+  
+}
+.events-main__content {}

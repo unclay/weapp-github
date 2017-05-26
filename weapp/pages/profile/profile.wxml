@@ -1,0 +1,80 @@
+<view class="profile">
+  <view class="profile-hd">
+    <view class="profile-avatar__default">
+      <text wx:if="{{!profile.avatarUrlLoaded}}" class="iconfont icon-github profile-avatar__default-icon"></text>
+      <image class="profile-avatar" src="{{profile.avatar_url}}" bindload="onAvatarUrlLoad"></image>
+    </view>
+    <view class="profile-name">{{query.user}}</view>
+    <view class="profile-desc">{{profile.name}}</view>
+  </view>
+  <view class="profile-bd">
+    <view class="cells cells-notop">
+      <view class="flexbox">
+        <view class="flexbox-border__bottom"></view>
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__right"></view>
+          <view class="profile-hotspot__value">{{profile.followers >= 0 ? profile.followers : '-'}}</view>
+          <view class="profile-hotspot__hint">Followers</view>
+        </view>
+        <view class="flexbox-item__col2">
+          <view class="profile-hotspot__value">{{profile.following >= 0 ? profile.following : '-'}}</view>
+          <view class="profile-hotspot__hint">Following</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="cells" style="display: block;">
+      <view class="cell-before__full"></view>
+      <view class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-11"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Events
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <view class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-organization"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Origanizations
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <view class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-repo"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Repositories
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <view class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-gist"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Gists
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </view>
+      <view class="cell-after__full"></view>
+    </view>
+
+  </view>
+</view>
