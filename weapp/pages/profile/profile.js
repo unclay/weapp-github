@@ -9,7 +9,14 @@ Page({
       user: '',
     },
     profile: {},
-    errText: ''
+    errText: '',
+    profileAvatarLoaded: false,
+  },
+  onShareAppMessage() {
+    return {
+      title: `Github - ${this.data.query.user}`,
+      path: `/pages/profile/profile?user=${this.data.query.user}`,
+    }
   },
   onPullDownRefresh() {
     this.getProfile(() => {
@@ -51,9 +58,8 @@ Page({
     });
   },
   onAvatarUrlLoad() {
-    this.data.profile.avatarUrlLoaded = true;
     this.setData({
-      profile: this.data.profile,
+      profileAvatarLoaded: true,
     });
   },
   onLoad({ user }) {

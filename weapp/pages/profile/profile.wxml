@@ -1,7 +1,7 @@
 <view class="profile">
   <view class="profile-hd">
     <view class="profile-avatar__default">
-      <text wx:if="{{!profile.avatarUrlLoaded}}" class="iconfont icon-github profile-avatar__default-icon"></text>
+      <text wx:if="{{!profileAvatarLoaded}}" class="iconfont icon-github profile-avatar__default-icon"></text>
       <image class="profile-avatar" src="{{profile.avatar_url}}" bindload="onAvatarUrlLoad"></image>
     </view>
     <view class="profile-name">{{query.user}}</view>
@@ -34,6 +34,7 @@
           Events
         </view>
         <view class="cell-ft">
+          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>
@@ -46,6 +47,7 @@
           Origanizations
         </view>
         <view class="cell-ft">
+          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>
@@ -58,6 +60,7 @@
           Repositories
         </view>
         <view class="cell-ft">
+          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>
@@ -70,6 +73,7 @@
           Gists
         </view>
         <view class="cell-ft">
+          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>

@@ -1,6 +1,9 @@
 <view class="repo">
   <view class="repo-hd">
-    <image class="repo-avatar" src="{{repo.owner.avatar_url}}"></image>
+    <navigator url="/pages/profile/profile?user={{query.user}}" class="repo-avatar__default">
+      <text wx:if="{{!repoAvatarLoaded}}" class="iconfont icon-github repo-avatar__default-icon"></text>
+      <image class="repo-avatar" src="{{repo.owner.avatar_url}}" bindload="onAvatarUrlLoad"></image>
+    </navigator>
     <view class="repo-name">{{repo.name}}</view>
     <view class="repo-desc">{{repo.description}}</view>
   </view>
@@ -116,7 +119,20 @@
 
     <view class="cells" style="display: block;">
       <view class="cell-before__full"></view>
-      <view class="cell" style="display: none;">
+      <navigator url="/pages/events/events?name={{query.name}}&user={{query.user}}" class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-11"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Events
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </navigator>
+      <view class="cell">
+        <view class="cell-before__bd"></view>
         <view class="cell-hd">
           <text class="iconfont icon-issue-opened"></text>
         </view>
@@ -124,6 +140,7 @@
           Issues
         </view>
         <view class="cell-ft">
+          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>
@@ -142,7 +159,7 @@
       <view class="cell-after__full"></view>
     </view>
 
-    <view class="cells" style="display: none;">
+    <view class="cells">
       <view class="cell-before__full"></view>
       <view class="cell">
         <view class="cell-hd">
@@ -152,6 +169,7 @@
           Commits
         </view>
         <view class="cell-ft">
+          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>
@@ -164,6 +182,7 @@
           Pull Requests
         </view>
         <view class="cell-ft">
+          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>
@@ -176,6 +195,7 @@
           Source
         </view>
         <view class="cell-ft">
+          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>

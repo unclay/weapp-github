@@ -1,5 +1,5 @@
 <view>
-  <view class="events-box">
+  <!--   <view class="events-box">
     <view class="events-tips">
       <view class="events-tips__hd">
         <text class="iconfont icon-xingxing events-xingxing"></text>
@@ -17,26 +17,112 @@
         <view class="events-main__content">asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</view>
       </view>
     </view>
-  </view>
+  </view> -->
 
 
-  <view wx:for="{{events}}" wx:key="unique" wx:for-index="index" wx:for-item="item"  class="events-box">
-    <view class="events-tips">
+  <view wx:for="{{events}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="events-box">
+    <!-- star -->
+    <view wx:if="{{item.type === 'WatchEvent'}}" class="events-tips">
       <view class="events-tips__hd">
         <text class="iconfont icon-xingxing events-xingxing"></text>
       </view>
-      <view class="events-tips__bd events-tips__primary">{{item.created_at}}</view>
+      <view class="events-tips__bd events-tips__primary">{{item.after_long_time}}</view>
     </view>
-    <view class="events-main">
+    <view wx:if="{{item.type === 'WatchEvent'}}" class="events-main">
       <view class="events-main__hd">
-        <text class="iconfont icon-github events-github"></text>
+        <text wx:if="{{!item.actor.avatar_url}}" class="iconfont icon-github events-github"></text>
+        <image wx:else class="events-main__avatar" src="{{item.actor.avatar_url}}"></image>
       </view>
       <view class="events-main__bd events-main__primary">
         <view class="events-main__title">
-          <text class="events-main__url">Clay</text> Starred <text class="events-main__url">airyland/VUX</text>
+          <navigator url="/pages/profile/profile?user={{query.user}}" class="events-main__url">{{item.actor.login}}</navigator> starred <text class="events-main__url">{{item.repo.name}}</text>
         </view>
-        <view class="events-main__content">asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</view>
       </view>
     </view>
+
+    <!-- comment -->
+    <view wx:if="{{item.type === 'IssueCommentEvent'}}" class="events-tips">
+      <view class="events-tips__hd">
+        <text class="iconfont icon-comment events-comment"></text>
+      </view>
+      <view class="events-tips__bd events-tips__primary">{{item.after_long_time}}</view>
+    </view>
+    <view wx:if="{{item.type === 'IssueCommentEvent'}}" class="events-main">
+      <view class="events-main__hd">
+        <text wx:if="{{!item.actor.avatar_url}}" class="iconfont icon-github events-github"></text>
+        <image wx:else class="events-main__avatar" src="{{item.actor.avatar_url}}"></image>
+      </view>
+      <view class="events-main__bd events-main__primary">
+        <view class="events-main__title">
+          <navigator url="/pages/profile/profile?user={{query.user}}" class="events-main__url">{{item.actor.login}}</navigator> Commented on issue #{{item.payload.issue.number}} in <text class="events-main__url">{{item.repo.name}}</text>
+        </view>
+        <view class="events-main__content">{{item.payload.comment.body}}</view>
+      </view>
+    </view>
+
+    <!-- issue -->
+    <view wx:if="{{item.type === 'IssuesEvent'}}" class="events-tips">
+      <view class="events-tips__hd">
+        <text class="iconfont icon-issue-opened events-issue-opened"></text>
+      </view>
+      <view class="events-tips__bd events-tips__primary">{{item.after_long_time}}</view>
+    </view>
+    <view wx:if="{{item.type === 'IssuesEvent'}}" class="events-main">
+      <view class="events-main__hd">
+        <text wx:if="{{!item.actor.avatar_url}}" class="iconfont icon-github events-github"></text>
+        <image wx:else class="events-main__avatar" src="{{item.actor.avatar_url}}"></image>
+      </view>
+      <view class="events-main__bd events-main__primary">
+        <view class="events-main__title">
+          <navigator url="/pages/profile/profile?user={{query.user}}" class="events-main__url">{{item.actor.login}}</navigator>
+          <text> {{item.payload.action}} on issue #{{item.payload.issue.number}} in </text>
+          <text class="events-main__url">{{item.repo.name}}</text>
+        </view>
+        <view class="events-main__content">{{item.payload.issue.title}}</view>
+      </view>
+    </view>
+
+    <!-- fork -->
+    <view wx:if="{{item.type === 'ForkEvent'}}" class="events-tips">
+      <view class="events-tips__hd">
+        <text class="iconfont icon-flowbranch1157840easyiconnet events-fork"></text>
+      </view>
+      <view class="events-tips__bd events-tips__primary">{{item.after_long_time}}</view>
+    </view>
+    <view wx:if="{{item.type === 'ForkEvent'}}" class="events-main">
+      <view class="events-main__hd">
+        <text wx:if="{{!item.actor.avatar_url}}" class="iconfont icon-github events-github"></text>
+        <image wx:else class="events-main__avatar" src="{{item.actor.avatar_url}}"></image>
+      </view>
+      <view class="events-main__bd events-main__primary">
+        <view class="events-main__title">
+          <navigator url="/pages/profile/profile?user={{query.user}}" class="events-main__url">{{item.actor.login}}</navigator> forked <text class="events-main__url">{{item.repo.name}}</text> to <text class="events-main__url">{{item.payload.forkee.full_name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- PullRequestEvent -->
+    <view wx:if="{{item.type === 'PullRequestEvent'}}" class="events-tips">
+      <view class="events-tips__hd">
+        <text class="iconfont icon-pullrequest events-pullrequest"></text>
+      </view>
+      <view class="events-tips__bd events-tips__primary">{{item.after_long_time}}</view>
+    </view>
+    <view wx:if="{{item.type === 'PullRequestEvent'}}" class="events-main">
+      <view class="events-main__hd">
+        <text wx:if="{{!item.actor.avatar_url}}" class="iconfont icon-github events-github"></text>
+        <image wx:else class="events-main__avatar" src="{{item.actor.avatar_url}}"></image>
+      </view>
+      <view class="events-main__bd events-main__primary">
+        <view class="events-main__title">
+          <navigator url="/pages/profile/profile?user={{query.user}}" class="events-main__url">{{item.actor.login}}</navigator> {{item.payload.action}} pull request #{{item.payload.number}} <text class="events-main__url">{{item.repo.name}}</text>
+        </view>
+        <view class="events-main__content">{{item.payload.pull_request.title}}</view>
+      </view>
+    </view>
+
+
+
+    
   </view>
 </view>

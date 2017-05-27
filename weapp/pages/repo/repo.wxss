@@ -3,12 +3,25 @@
   background-color: #37373b;
   text-align: center;
 }
-.repo-avatar {
+.repo-avatar__default {
+  display: inline-block;
   margin-top: 60rpx;
   width: 140rpx;
   height: 140rpx;
   border-radius: 140rpx;
   border: 5rpx solid #fff;
+  overflow:hidden;
+}
+.repo-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 140rpx;
+}
+.repo-avatar__default-icon {
+  display: inline-block;
+  font-size: 140rpx;
+  margin-top:-20rpx;
+  background-color:#fff;
 }
 .repo-name {
   display: block;

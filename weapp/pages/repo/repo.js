@@ -30,6 +30,7 @@ Page({
       name: '',
     },
     repo: {},
+    repoAvatarLoaded: false,
     errText: ''
   },
   onPullDownRefresh() {
@@ -94,6 +95,11 @@ Page({
     }).catch((err) => {
       self.showError(err && err.errMsg);
       callback && callback(err);
+    });
+  },
+  onAvatarUrlLoad() {
+    this.setData({
+      repoAvatarLoaded: true,
     });
   },
   onLoad({ name, user }) {

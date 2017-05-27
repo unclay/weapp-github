@@ -42,7 +42,27 @@ Page({
         return self.showError(res.data.response.text)
       }
       self.setData({
-        events: res.data,
+        events: res.data.map((item) => {
+          const now = parseInt(new Date().getTime() / 1000, 10);
+          const create = parseInt(new Date(item.created_at).getTime() / 1000, 10);
+          const diff = now - create;
+          const num = 0;
+          const type = '';
+          if (diff < 60) {
+            item.after_long_time = `${diff} seconds ago`;
+          } else if (diff < 60 * 60) {
+            item.after_long_time = `${Math.ceil(diff / 60)} minutes ago`;
+          } else if (diff < 24 * 60 * 60) {
+            item.after_long_time = `${Math.ceil(diff / 60 / 60)} hours ago`;
+          } else if (diff < 30 * 24 * 60 * 60) {
+            item.after_long_time = `${Math.ceil(diff / 60 / 60 / 24)} days ago`;
+          } else if (diff < 12 * 30 * 24 * 60 * 60) {
+            item.after_long_time = `${Math.ceil(diff / 60 / 60 / 24)} months ago`;
+          } else {
+            item.after_long_time = `${Math.ceil(diff / 60 / 60 / 24 / 30)} months ago`;
+          }
+          return item;
+        }),
       });
       wx.hideLoading();
       callback && callback(null);
