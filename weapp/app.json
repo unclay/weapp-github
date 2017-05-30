@@ -5,7 +5,8 @@
     "pages/repo/repo",
     "pages/readme/readme",
     "pages/profile/profile",
-    "pages/events/events"
+    "pages/events/events",
+    "pages/issues/issues"
   ],
   "window":{
     "backgroundTextStyle":"dark",

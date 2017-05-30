@@ -6,6 +6,8 @@
 @import './common/wxss/panel.wxss';
 @import './common/wxss/icon.wxss';
 
+@import './components/search-bar/index.wxss';
+
 page {
   background-color: #efeff4;
 }

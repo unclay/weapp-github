@@ -1,0 +1,16 @@
+<template name="search-bar">
+  <view class="search-bar">
+    <view class="search-bar__form">
+      <view wx:if="{{searchBar.focus}}" class="search-bar__box">
+        <icon class="search-bar__input-icon" type="search" size="13"></icon>
+        <input class="search-bar__input" bindinput="onSearchBarChange" focus="{{searchBar.focus}}" type="text" placeholder="Search" placeholder-class="search-bar__input-placeholder" />
+      </view>
+      <view wx:else class="search-bar__input-toces" bindtap="onFocus">
+        <icon class="search-bar__input-icon" type="search" size="13"></icon>
+        <text class="search-bar__input-toces--tips">Search</text>
+      </view>
+    </view>
+    <text wx:if="{{searchBar.focus}}" class="search-bar__btn-cancle" bindtap="onSearchBarCancel">Cancel</text>
+    <navigator wx:if="{{searchBar.type === 'navigateBack' && searchBar.focus}}" class="search-bar__btn-cancle" url="/pages/index/index" open-type="navigateBack">Cancel</navigator>
+  </view>
+</template>

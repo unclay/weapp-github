@@ -1,45 +1,43 @@
 const { language, state } = require('../store/index');
-
+const searchBar = require('../../components/search-bar/index.js');
 Page({
   data: {
-    select: {
+    searchBar: {
+      focus: false,
+    },
+    language: {
       options: language,
       state: state.trending.language,
-      focus: false,
     }
   },
   onPullDownRefresh() {
     wx.stopPullDownRefresh();
   },
-  onInputChange(e) {
-    this.data.select.options = language.filter((item) => {
+  onSearchBarChange(e) {
+    this.data.language.options = language.filter((item) => {
       if (item.name.match(new RegExp(e.detail.value, 'gi'))) {
         return item;
       }
     });
-    this.data.select.value = '';
     this.setData({
-      select: this.data.select,
-    });
-  },
-  onFocus() {
-    this.data.select.focus = true;
-    this.setData({
-      select: this.data.select,
+      language: this.data.language,
     });
   },
   onSelectChange(e) {
-    state.trending.language = this.data.select.options[e.currentTarget.dataset.index];
-    this.data.select.state = this.data.select.options[e.currentTarget.dataset.index];
+    state.trending.language = this.data.language.options[e.currentTarget.dataset.index];
+    this.data.language.state = this.data.language.options[e.currentTarget.dataset.index];
     this.setData({
-      select: this.data.select
+      language: this.data.language
     })
     wx.navigateBack();
   },
-  onShow() {
-    this.data.select.state = state.trending.language;
-    this.setData({
-      select: this.data.select
-    })
+  onLoad() {
+    this.data.language.state = state.trending.language;
+      this.setData({
+        language: this.data.language
+      })
+    searchBar.init.apply(this).params({
+      type: '',
+    });
   }
 })
