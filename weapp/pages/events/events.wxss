@@ -88,7 +88,7 @@ page {
 }
 .events-main__url {
   display:inline-block;
-  color: #4ca0ff;
+  color: #0366d6;
   word-break: break-all;
 }
 .events-main__content {

@@ -1,0 +1,50 @@
+.issues-box .iconfont {
+  display: inline-block;
+  padding-top: 8rpx;
+}
+.issues-box .icon-settings {
+  display: inline-block;
+  padding-top: 8rpx;
+}
+.issues-box {
+  background-color: #fff;
+}
+.issues-item {
+  display: flex;
+}
+.issues-item__hd {
+  position: relative;
+  width: 120rpx;
+}
+.issues-item__hd-divide {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 3rpx;
+  height: 80%;
+  background-color: #aaa;
+}
+.issues-item__bd {
+  padding-left: 20rpx;
+}
+.issues-item__primary {
+  flex: 1;
+}
+.issues-item__title {
+  font-size:32rpx;
+  color: #0366d6;
+}
+.issues-item__attr {
+  display: flex;
+}
+.issues-item__attr {
+  display: flex;
+}
+.issues-item__attr-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.issues-item__word {
+
+}
