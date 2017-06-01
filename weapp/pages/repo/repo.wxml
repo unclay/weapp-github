@@ -140,7 +140,6 @@
           Issues
         </view>
         <view class="cell-ft">
-          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
       </navigator>

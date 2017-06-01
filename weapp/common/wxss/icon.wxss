@@ -19,6 +19,8 @@
 
 .icon-fenxiang:before { content: "\e6d2"; }
 
+.icon-bianji:before { content: "\e648"; }
+
 .icon-icon2:before { content: "\e668"; }
 
 .icon-lock:before { content: "\e636"; }
@@ -68,3 +70,4 @@
 .icon-osm-message-feedback:before { content: "\e6c8"; }
 
 .icon-hezi:before { content: "\e612"; }
+

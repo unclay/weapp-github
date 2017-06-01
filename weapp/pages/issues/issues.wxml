@@ -1,38 +1,40 @@
 <view>
   <import src="../../components/search-bar/index.wxml"/>
   <template is="search-bar" data="{{searchBar: searchBar}}"></template>
-
+  <view class="issues-tab">
+    <view class="issues-tab__item {{query.state === 'open' ? 'active' : ''}}" bindtap="onStateOpen">
+      <view class="issues-tab__item-divide"></view>
+      Open
+    </view>
+    <view class="issues-tab__item {{query.state === 'closed' ? 'active' : ''}}" bindtap="onStateClosed">Closed</view>
+  </view>
   <view class="issues-box">
-    <view class="issues-item">
+    <view wx:for="{{list}}" wx:key="{{unique}}" wx:for-item="item" wx:for-index="index" class="issues-item">
       <view class="issues-item__hd">
         <view class="issues-item__hd-divide"></view>
-        <view class="issues-item__title">
-          #1484
-        </view>
-        <view class="">
-          Issue
-        </view>
+        <view class="issues-item__title">#{{item.number}}</view>
+        <view class="issues-item__word">{{item.issue_type}}</view>
       </view>
       <view class="issues-item__bd issues-item__primary">
-        <view class="issues-item__title">[fix] close by unclay</view>
+        <view class="issues-item__title">{{item.title}}</view>
         <view class="issues-item__attr">
           <view class="issues-item__attr-item">
             <text class="iconfont icon-settings"></text>
-            <text class="issues-item__word">open</text>
+            <text class="issues-item__word">{{item.state}}</text>
           </view>
           <view class="issues-item__attr-item">
             <text class="iconfont icon-comment"></text>
-            <text class="issues-item__word">2 comments</text>
+            <text class="issues-item__word">{{item.comments}} comments</text>
           </view>
         </view>
         <view class="issues-item__attr">
           <view class="issues-item__attr-item">
             <text class="iconfont icon-icon2"></text>
-            <text class="issues-item__word">unclay</text>
+            <text class="issues-item__word">{{item.user.login}}</text>
           </view>
           <view class="issues-item__attr-item">
-            <text class="iconfont icon-riqi"></text>
-            <text class="issues-item__word">5 days age</text>
+            <text class="iconfont icon-bianji"></text>
+            <text class="issues-item__word">{{item.after_long_time}}</text>
           </view>
         </view>
       </view>

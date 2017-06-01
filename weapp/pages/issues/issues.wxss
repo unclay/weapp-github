@@ -1,44 +1,64 @@
 .issues-box .iconfont {
   display: inline-block;
-  padding-top: 8rpx;
+  margin-right: 14rpx;
+  font-size: 24rpx;
+  color:#666;
 }
 .issues-box .icon-settings {
-  display: inline-block;
   padding-top: 8rpx;
+}
+.issues-box .icon-bianji {
+  padding: 0 2rpx 0 2rpx;
+}
+.issues-box .icon-comment {
+  margin-top: 6rpx;
+  font-size: 22rpx;
 }
 .issues-box {
   background-color: #fff;
 }
 .issues-item {
   display: flex;
+  font-size: 32rpx;
+  border-bottom: 2rpx solid #ddd;
 }
 .issues-item__hd {
   position: relative;
   width: 120rpx;
+  text-align:center;
+}
+.issues-item__hd .issues-item__word {
+  padding-top: 4rpx;
 }
 .issues-item__hd-divide {
   position: absolute;
   top: 10%;
   right: 0;
-  width: 3rpx;
+  width: 2rpx;
   height: 80%;
   background-color: #aaa;
 }
 .issues-item__bd {
   padding-left: 20rpx;
+  padding-bottom: 8rpx;
 }
 .issues-item__primary {
   flex: 1;
 }
 .issues-item__title {
-  font-size:32rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  font-size: 28rpx;
   color: #0366d6;
+  padding: 12rpx 0 2rpx;
+  overflow: hidden;
 }
 .issues-item__attr {
   display: flex;
 }
 .issues-item__attr {
   display: flex;
+  padding-left: 2rpx;
 }
 .issues-item__attr-item {
   display: flex;
@@ -46,5 +66,34 @@
   flex: 1;
 }
 .issues-item__word {
+  color:#666;
+  font-size: 24rpx;
+  font-weight: 400;
+}
 
+.issues-tab {
+  display: flex;
+  background-color: #fff;
+  padding-bottom: 8rpx;
+}
+.issues-tab__item {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  font-size: 30rpx;
+  color: #0366d6;
+  padding: 10rpx 0;
+  border-bottom: 2rpx solid #dfe2e5;
+}
+.issues-tab__item-divide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2rpx;
+  background-color: #dfe2e5;
+}
+.issues-tab__item.active {
+  color: #444d56;
+  border-bottom: 2rpx solid transparent;
 }

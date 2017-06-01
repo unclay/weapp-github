@@ -51,15 +51,15 @@ Page({
           if (diff < 60) {
             item.after_long_time = `${diff} seconds ago`;
           } else if (diff < 60 * 60) {
-            item.after_long_time = `${Math.ceil(diff / 60)} minutes ago`;
+            item.after_long_time = `${Math.floor(diff / 60)} minutes ago`;
           } else if (diff < 24 * 60 * 60) {
-            item.after_long_time = `${Math.ceil(diff / 60 / 60)} hours ago`;
+            item.after_long_time = `${Math.floor(diff / 60 / 60)} hours ago`;
           } else if (diff < 30 * 24 * 60 * 60) {
-            item.after_long_time = `${Math.ceil(diff / 60 / 60 / 24)} days ago`;
+            item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} days ago`;
           } else if (diff < 12 * 30 * 24 * 60 * 60) {
-            item.after_long_time = `${Math.ceil(diff / 60 / 60 / 24)} months ago`;
+            item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} months ago`;
           } else {
-            item.after_long_time = `${Math.ceil(diff / 60 / 60 / 24 / 30)} months ago`;
+            item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} months ago`;
           }
           return item;
         }),
