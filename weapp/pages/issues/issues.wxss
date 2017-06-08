@@ -74,7 +74,6 @@
 .issues-tab {
   display: flex;
   background-color: #fff;
-  padding-bottom: 8rpx;
 }
 .issues-tab__item {
   position: relative;

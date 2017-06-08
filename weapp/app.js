@@ -10,3 +10,8 @@ App({
 
   }
 })
+
+Array.prototype.remDub = Array.prototype.remDub || function () {
+  //return Array.from(new Set(this));
+  return [...new Set(this)];
+};

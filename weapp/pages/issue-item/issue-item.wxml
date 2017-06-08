@@ -1,0 +1,49 @@
+<view class="issueitem">
+  <view class="issueitem-hd">
+    <view class="issueitem-avatar__default">
+      <text wx:if="{{!issueitemAvatarLoaded}}" class="iconfont icon-github issueitem-avatar__default-icon"></text>
+      <image class="issueitem-avatar" src="{{issueitem.user.avatar_url}}" bindload="onAvatarUrlLoad"></image>
+    </view>
+    <view class="issueitem-name">{{issueitem.title || 'Issue #' + query.number}}</view>
+    <view class="issueitem-desc">{{issueitem.after_long_time}}</view>
+  </view>
+  <text>{{errText}}</text>
+  <view wx:if="{{!errText && issueitem.user}}" class="issueitem-bd">
+    <view class="cells cells-notop">
+      <view class="flexbox">
+        <view class="flexbox-border__bottom"></view>
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__right"></view>
+          <view class="issueitem-hotspot__value">{{issueitem.comments >= 0 ? issueitem.comments : '-'}}</view>
+          <view class="issueitem-hotspot__hint">Comments</view>
+        </view>
+        <view class="flexbox-item__col2">
+          <view class="issueitem-hotspot__value">{{participants.length >= 0 ? participants.length : '-'}}</view>
+          <view class="issueitem-hotspot__hint">Participants</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="cells" style="display: block;">
+      <view class="cell-before__full"></view>
+      <import src="../wemark/wemark.wxml"/>
+      <template is="wemark" data="{{...wemark}}"></template>
+      <view class="cell-after__full"></view>
+    </view>
+
+    <view wx:if="{{issueComments.length > 0}}" class="issueitem-comments">
+      <view wx:for="{{issueComments}}" wx:key="{{unique}}" wx:for-item="item" wx:for-index="index" class="issueitem-comments__item">
+        <view class="issueitem-comments__hd">
+          <text wx:if="{{!item.user.avatar_url}}" class="iconfont icon-github issueitem-github"></text>
+          <image wx:else class="issueitem-comments__avatar" src="{{item.user.avatar_url}}"></image>
+        </view>
+        <view class="issueitem-comments__bd">
+          <view class="issueitem-comments__title">{{item.user.login}}</view>
+          <view class="issueitem-comments__desc">{{item.after_long_time}}</view>
+          <view class="issueitem-comments__content">{{item.body}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="zhankeng"></view>
+  </view>
+</view>

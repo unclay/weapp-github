@@ -9,7 +9,6 @@
   position: relative;
   display: flex;
   padding: 20rpx 15rpx 20rpx 30rpx;
-  height: 40rpx;
   line-height: 40rpx;
   font-size: 28rpx;
   background-color: #fff;

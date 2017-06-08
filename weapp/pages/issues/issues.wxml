@@ -9,7 +9,7 @@
     <view class="issues-tab__item {{query.state === 'closed' ? 'active' : ''}}" bindtap="onStateClosed">Closed</view>
   </view>
   <view class="issues-box">
-    <view wx:for="{{list}}" wx:key="{{unique}}" wx:for-item="item" wx:for-index="index" class="issues-item">
+    <navigator url="/pages/issue-item/issue-item?user={{query.user}}&name={{query.name}}&number={{item.number}}" wx:for="{{list}}" wx:key="{{unique}}" wx:for-item="item" wx:for-index="index" class="issues-item">
       <view class="issues-item__hd">
         <view class="issues-item__hd-divide"></view>
         <view class="issues-item__title">#{{item.number}}</view>
@@ -38,7 +38,7 @@
           </view>
         </view>
       </view>
-    </view>
+    </navigator>
     
   </view>
 </view>

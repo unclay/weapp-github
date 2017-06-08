@@ -60,7 +60,7 @@ Page({
       url: 'http://trending.codehub-app.com/v2/trending',
       since: since.range[since.index].value,
       language: language.state.value,
-      expire: 3000
+      expire: 60 * 60
     };
     // 每次请求提示加载中
     wx.showLoading({

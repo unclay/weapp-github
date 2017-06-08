@@ -6,7 +6,8 @@
     "pages/readme/readme",
     "pages/profile/profile",
     "pages/events/events",
-    "pages/issues/issues"
+    "pages/issues/issues",
+    "pages/issue-item/issue-item"
   ],
   "window":{
     "backgroundTextStyle":"dark",
