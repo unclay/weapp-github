@@ -66,6 +66,9 @@
 	background-color: #f4f4f4;
 	border-radius: 8rpx;
 }
+.wemark_block_code view {
+	overflow-x: scroll;
+}
 .wemark_block_table_tr{
 	display: flex;
 	border-right:1rpx solid #e0e0e0;

@@ -1,6 +1,6 @@
 {
   "name": "weapp-github",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "weapp,github",
   "main": "app.js",
   "scripts": {

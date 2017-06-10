@@ -109,3 +109,11 @@
   padding-top: 16rpx;
   font-size: 34rpx;
 }
+.issueitem-comments__content .wemark_wrapper {
+  margin: 0;
+  padding: 0;
+}
+.issueitem-comments__content .wemark_block_p {
+  margin: 0;
+  padding: 0;
+}

@@ -23,10 +23,9 @@
         </view>
       </view>
     </view>
-
+    <import src="../wemark/wemark.wxml"/>
     <view class="cells" style="display: block;">
       <view class="cell-before__full"></view>
-      <import src="../wemark/wemark.wxml"/>
       <template is="wemark" data="{{...wemark}}"></template>
       <view class="cell-after__full"></view>
     </view>
@@ -40,7 +39,10 @@
         <view class="issueitem-comments__bd">
           <view class="issueitem-comments__title">{{item.user.login}}</view>
           <view class="issueitem-comments__desc">{{item.after_long_time}}</view>
-          <view class="issueitem-comments__content">{{item.body}}</view>
+          <view class="issueitem-comments__content">
+            <view wx:if="{{!item.bodyParse}}">{{item.body}}</view>
+            <template wx:else is="wemark" data="{{...item.bodyParse}}"></template>
+          </view>
         </view>
       </view>
     </view>

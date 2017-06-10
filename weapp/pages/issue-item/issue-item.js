@@ -14,7 +14,7 @@ Page({
     issueitem: {},
     issueComments: [],
     participants: [],
-    wemark,
+    wemark: '',
     errText: '',
     issueitemAvatarLoaded: false,
   },
@@ -70,7 +70,14 @@ Page({
         item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} months ago`;
       }
       item.after_long_time = `Updated ${item.after_long_time}`;
-      wemark.parse(decodeURIComponent(res.data.body), self, {
+      // fixed URI malformed (% question)
+      let uriWemark;
+      try {
+        uriWemark = decodeURIComponent(res.data.body);
+      } catch(err) {
+        uriWemark = decodeURIComponent(res.data.body.replace(/%/gi, escape('%')));
+      }
+      wemark.parse(uriWemark, self, {
         imageWidth: wx.getSystemInfoSync().windowWidth - 40,
         name: 'wemark'
       });
@@ -93,7 +100,8 @@ Page({
         participants.push(item.user.id);
       }
       participants = participants.remDub();
-      const issueComments = res.data.map((item) => {
+      // 格式化数据
+      res.data.map((item, index) => {
         const now = parseInt(new Date().getTime() / 1000, 10);
         const create = parseInt(new Date(item.updated_at).getTime() / 1000, 10);
         const diff = now - create;
@@ -112,9 +120,26 @@ Page({
         }
         return item;
       });
+      // 渲染UI
       self.setData({
         issueComments: res.data,
         participants,
+      });
+      // 编译markdown
+      self.data.issueComments.forEach((item, index) => {
+        let uriWemark;
+        try {
+          uriWemark = decodeURIComponent(item.body);
+        } catch(err) {
+          uriWemark = decodeURIComponent(item.body.replace(/%/gi, escape('%')));
+        }
+        wemark.parse(uriWemark, self, {
+          imageWidth: wx.getSystemInfoSync().windowWidth - 40,
+          ext: {
+            wemarkIndex: index,
+          },
+          name: 'issueComments[{{wemarkIndex}}].bodyParse',
+        });
       });
       wx.hideLoading();
       callback && callback(null);

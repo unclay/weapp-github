@@ -20,10 +20,10 @@ function parse(md, page, options){
 	// 图片高度数组
 	var imageHeight = {};
 	// 返回的数据
-	var ret = {
+	var ret = Object.assign({
 		renderList: renderList,
 		imageHeight: imageHeight
-	};
+	}, options.ext || {});
 
 	var env = [];
 	// 记录当前list深度
@@ -172,14 +172,23 @@ function parse(md, page, options){
 		var natureWidth = e.detail.width;
 		var asp = natureHeight/natureWidth;
 		var obj = {};
-		obj[options.name + '.imageHeight.' + e.target.dataset.id] = options.imageWidth*asp;
+		var name = options.name;
+		// 异步加载导致更新不到对应数组元素的值，采用外部传参
+		if (e.target.dataset.wemarkindex) {
+			name = name.replace('{{wemarkIndex}}', e.target.dataset.wemarkindex);
+		}
+		obj[name + '.imageHeight.' + e.target.dataset.id] = options.imageWidth*asp;
 		this.setData(obj);
 	};
 
 	var obj = {};
-	obj[options.name] = ret;
+	var name = options.name;
+	// 兼容外部数组格式的markdown
+	if (ret.wemarkIndex || ret.wemarkIndex >= 0) {
+		name = name.replace('{{wemarkIndex}}', ret.wemarkIndex);
+	}
+	obj[name] = ret;
 	page.setData(obj);
-
 }
 
 module.exports = {
