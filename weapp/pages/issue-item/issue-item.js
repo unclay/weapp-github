@@ -137,6 +137,7 @@ Page({
           imageWidth: wx.getSystemInfoSync().windowWidth - 40,
           ext: {
             wemarkIndex: index,
+            preview: true,
           },
           name: 'issueComments[{{wemarkIndex}}].bodyParse',
         });
@@ -162,7 +163,7 @@ Page({
     });
     this.getissueitem();
     wx.setNavigationBarTitle({
-      title: 'issueitem'
+      title: `Issue #${number}`
     });
   }
 });

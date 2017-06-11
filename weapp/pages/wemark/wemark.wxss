@@ -105,6 +105,12 @@
 	width:100%;
 	height:auto;
 }
+.wemark_inline_image.icon {
+	width: 0;
+}
+.wemark_inline_image.loaded {
+	padding-right: 10rpx;
+}
 .wemark_inline_code{
 	background:#f0f0f0;
 	padding:3px 5px;

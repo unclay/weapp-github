@@ -8,4 +8,4 @@ version | content
 1.3.0 | add events page and profile page
 1.4.0 | add issues page
 1.4.1 | add issues inner page
-1.4.2 | Fiex URI malformed and optimize wemark UI
+1.4.2 | Fiex URI malformed and optimize wemark UI and add previewImage in issue

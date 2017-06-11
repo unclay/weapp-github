@@ -3,13 +3,21 @@ var parser = new Remarkable({
 	html: true
 });
 
+var flagHeight = '60rpx;';
+var flagArr = [
+	'travis-ci.org',
+	'img.shields.io',
+	'img.badgesize.io',
+	'badges.gitter.im'
+];
+var sysInfo = wx.getSystemInfoSync();
+
 function parse(md, page, options){
 
 	if(!options) options = {};
 	if(!options.name) options.name = 'wemark';
 	if(!options.imageWidth) {
 		// 先写一个默认值
-		var sysInfo = wx.getSystemInfoSync();
 		options.imageWidth = sysInfo.windowWidth;
 	}
 
@@ -18,11 +26,16 @@ function parse(md, page, options){
 	// markdwon渲染列表
 	var renderList = [];
 	// 图片高度数组
-	var imageHeight = {};
+	var imageWidth = {};
+	var imageStatus = {};
+	// 图片列表
+	var images = [];
 	// 返回的数据
 	var ret = Object.assign({
 		renderList: renderList,
-		imageHeight: imageHeight
+		imageWidth: imageWidth,
+		imageStatus: imageStatus,
+		images: images,
 	}, options.ext || {});
 
 	var env = [];
@@ -34,7 +47,7 @@ function parse(md, page, options){
 
 	// 获取inline内容
 	var getInlineContent = function(inlineToken){
-		var ret = [];
+		var retInline = [];
 		var env;
 
 		if(inlineToken.type === 'htmlblock'){
@@ -46,7 +59,7 @@ function parse(md, page, options){
 			var html = inlineToken.content.replace(/\n/g, '');
 			while(match = videoRegExp.exec(html)){
 				if(match[1]){
-					ret.push({
+					retInline.push({
 						type: 'video',
 						src: match[1]
 					});
@@ -55,7 +68,7 @@ function parse(md, page, options){
 		}else{
 			inlineToken.children.forEach(function(token, index){
 				if(['text', 'code'].indexOf(token.type) > -1){
-					ret.push({
+					retInline.push({
 						type: env || token.type,
 						content: token.content
 					});
@@ -67,15 +80,26 @@ function parse(md, page, options){
 				}else if(token.type === 'em_open'){
 					env = 'em';
 				}else if(token.type === 'image'){
-					ret.push({
+					// console.log(token);
+					const json = {
 						type: token.type,
-						src: token.src
-					});
+						src: token.src,
+					}
+					for (var i = 0; i < flagArr.length; i++) {
+						if (token.src.match(new RegExp(`${flagArr[i]}.+\.svg`, 'gi'))) {
+							json.subtype = 'icon';
+							break;
+						}
+					}
+					if (json.subtype !== 'icon') {
+						ret.images.push(token.src);
+					}
+					retInline.push(json);
 				}
 			});
 		}
 
-		return ret;
+		return retInline;
 	};
 
 	var getBlockContent = function(blockToken, index){
@@ -174,11 +198,47 @@ function parse(md, page, options){
 		var obj = {};
 		var name = options.name;
 		// 异步加载导致更新不到对应数组元素的值，采用外部传参
+		if (e.target.dataset.wemarkindex >= 0) {
+			name = name.replace('{{wemarkIndex}}', e.target.dataset.wemarkindex);
+		}
+		if (sysInfo.windowWidth > natureWidth) {
+			obj[name + '.imageStatus.' + e.target.dataset.id] = {
+				width: natureWidth,
+				height: natureHeight,
+				loaded: 'loaded',
+			};
+		} else {
+			obj[name + '.imageStatus.' + e.target.dataset.id] = {
+				height: options.imageWidth*asp,
+				loaded: 'loaded',
+			};
+		}
+		console.log(obj, e)
+		this.setData(obj);
+	};
+
+	// 添加图片点击事件, 杂乱的数据，后期重构markdown插件
+	page.wemarkImageTap = function (e) {
+		var name = options.name;
 		if (e.target.dataset.wemarkindex) {
 			name = name.replace('{{wemarkIndex}}', e.target.dataset.wemarkindex);
 		}
-		obj[name + '.imageHeight.' + e.target.dataset.id] = options.imageWidth*asp;
-		this.setData(obj);
+		var param1 = name.split('[');
+		if (ret.preview && param1 && param1[0]) {
+			param1 = param1[0];
+			var data = this.data[param1];
+			if (data && e.target.dataset.wemarkindex >= 0) {
+				data = data[e.target.dataset.wemarkindex];
+				data = data.bodyParse || {};
+				data = data.images || [];
+				if (data.length > 0) {
+					wx.previewImage({
+					  current: data[0], // 当前显示图片的http链接
+					  urls: data // 需要预览的图片http链接列表
+					})
+				}
+			}
+		}
 	};
 
 	var obj = {};
