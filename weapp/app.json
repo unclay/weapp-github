@@ -7,7 +7,8 @@
     "pages/profile/profile",
     "pages/events/events",
     "pages/issues/issues",
-    "pages/issue-item/issue-item"
+    "pages/issue-item/issue-item",
+    "pages/branch/branch"
   ],
   "window":{
     "backgroundTextStyle":"dark",

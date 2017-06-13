@@ -160,7 +160,7 @@
 
     <view class="cells">
       <view class="cell-before__full"></view>
-      <view class="cell">
+      <navigator url="/pages/branch/branch?name={{query.name}}&user={{query.user}}" class="cell">
         <view class="cell-hd">
           <text class="iconfont icon-gitcommit"></text>
         </view>
@@ -168,10 +168,9 @@
           Commits
         </view>
         <view class="cell-ft">
-          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
-      </view>
+      </navigator>
       <view class="cell">
         <view class="cell-before__bd"></view>
         <view class="cell-hd">
