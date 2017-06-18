@@ -8,7 +8,9 @@
     "pages/events/events",
     "pages/issues/issues",
     "pages/issue-item/issue-item",
-    "pages/branch/branch"
+    "pages/branch/branch",
+    "pages/commits/commits",
+    "pages/commit-item/commit-item"
   ],
   "window":{
     "backgroundTextStyle":"dark",

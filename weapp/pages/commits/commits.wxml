@@ -1,0 +1,15 @@
+<view>
+  <view class="commits-list">
+    <navigator url="/pages/commit-item/commit-item?user={{query.user}}&name={{query.name}}&sha={{item.sha}}" wx:for="{{commits}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="commits-item">
+      <view class="commits-item__hd">
+        <text wx:if="{{!item.author.avatar_url}}" class="iconfont icon-github commits-github"></text>
+        <image wx:else class="commit__avatar" src="{{item.author.avatar_url}}"></image>
+      </view>
+      <view class="commits-item__bd">
+        <view class="commits-item__title">{{ item.commit.author.name }}</view>
+        <view class="commits-item__subtitle">{{ item.after_long_time }}</view>
+        <view class="commits-item__desc">{{ item.commit.message }}</view>
+      </view>
+    </navigator>
+  </view>
+</view>

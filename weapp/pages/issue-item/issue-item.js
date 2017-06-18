@@ -18,12 +18,6 @@ Page({
     errText: '',
     issueitemAvatarLoaded: false,
   },
-  onShareAppMessage() {
-    return {
-      title: `Github - ${this.data.query.user}`,
-      path: `/pages/issueitem/issueitem?user=${this.data.query.user}`,
-    }
-  },
   onPullDownRefresh() {
     this.getissueitem(() => {
       wx.stopPullDownRefresh();
@@ -63,11 +57,15 @@ Page({
       } else if (diff < 24 * 60 * 60) {
         item.after_long_time = `${Math.floor(diff / 60 / 60)} hours ago`;
       } else if (diff < 30 * 24 * 60 * 60) {
-        item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} days ago`;
+        if (Math.floor(diff / 60 / 60 / 24) === 1) {
+          item.after_long_time = 'yesterday';
+        } else {
+          item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} days ago`;
+        }
       } else if (diff < 12 * 30 * 24 * 60 * 60) {
         item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} months ago`;
       } else {
-        item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} months ago`;
+        item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} years ago`;
       }
       item.after_long_time = `Updated ${item.after_long_time}`;
       // fixed URI malformed (% question)

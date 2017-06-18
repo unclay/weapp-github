@@ -1,0 +1,47 @@
+.commits-list {
+}
+.commits-item {
+  display: flex;
+  background-color: #fff;
+}
+.commits-item__hd {
+  padding-top: 12rpx;
+  padding-left: 12rpx;
+}
+.commits-item__bd {
+  flex: 1;
+  border-bottom: 1px solid #eee;
+  padding: 12rpx 0 14rpx 12rpx;
+}
+.commit__avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+}
+.commits-item__title {
+  color: #008dd8;
+  font-size: 36rpx;
+  height: 36rpx;
+  line-height: 1;
+}
+.commits-item__subtitle {
+  color: #777;
+  font-size: 26rpx;
+  height: 26rpx;
+  line-height: 1;
+  padding-top: 8rpx;
+}
+.commits-item__desc {
+  padding-top: 16rpx;
+  color: #333;
+  font-size: 34rpx;
+  line-height: 34rpx;
+}
+
+.commits-github {
+  display: inline-block;
+  margin-top: -6rpx;
+  width: 60rpx;
+  height: 60rpx;
+  font-size: 60rpx;
+}

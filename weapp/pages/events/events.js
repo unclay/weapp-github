@@ -37,7 +37,6 @@ Page({
         expire: 60 * 60
       }
     }).then((res) => {
-      console.log(res);
       if (res.data.status && res.data.response) {
         return self.showError(res.data.response.text)
       }
@@ -55,7 +54,11 @@ Page({
           } else if (diff < 24 * 60 * 60) {
             item.after_long_time = `${Math.floor(diff / 60 / 60)} hours ago`;
           } else if (diff < 30 * 24 * 60 * 60) {
-            item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} days ago`;
+            if (Math.floor(diff / 60 / 60 / 24) === 1) {
+              item.after_long_time = '1 days ago';
+            } else {
+              item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} days ago`;
+            }
           } else if (diff < 12 * 30 * 24 * 60 * 60) {
             item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} months ago`;
           } else {

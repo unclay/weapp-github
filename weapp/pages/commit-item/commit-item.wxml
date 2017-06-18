@@ -1,0 +1,41 @@
+<view class="commititem">
+  <view class="commititem-hd">
+    <view class="commititem-avatar__default">
+      <text wx:if="{{!itemAvatarLoaded}}" class="iconfont icon-github commititem-avatar__default-icon"></text>
+      <image class="commititem-avatar" src="{{commitItem.author.avatar_url}}" bindload="onAvatarUrlLoad"></image>
+    </view>
+    <view class="commititem-name">{{ commitItem.commit.messageTitle }}</view>
+    <view class="commititem-desc">{{ commitItem.after_long_time }}</view>
+  </view>
+  <text>{{errText}}</text>
+  <view wx:if="{{!errText && commitItem.commit}}" class="commititem-bd">
+    <view class="cells cells-notop">
+      <view class="flexbox">
+        <view class="flexbox-border__bottom"></view>
+        <view class="flexbox-item__col3">
+          <view class="flexbox-border__right"></view>
+          <view class="commititem-hotspot__value">{{ commitItem.stats.additions >= 0 ? commitItem.stats.additions : '-'}}</view>
+          <view class="commititem-hotspot__hint">Additions</view>
+        </view>
+        <view class="flexbox-item__col3">
+          <view class="flexbox-border__right"></view>
+          <view class="commititem-hotspot__value">{{ commitItem.stats.deletions >= 0 ? commitItem.stats.deletions : '-'}}</view>
+          <view class="commititem-hotspot__hint">Deletions</view>
+        </view>
+        <view class="flexbox-item__col3">
+          <view class="commititem-hotspot__value">{{ commitItem.parents.length >= 0 ? commitItem.parents.length : '-'}}</view>
+          <view class="commititem-hotspot__hint">Parents</view>
+        </view>
+      </view>
+    </view>
+    <import src="../wemark/wemark.wxml"/>
+    <view class="cells" style="display: block;">
+      <view class="cell-before__full"></view>
+      <view class="wemark_box">
+        <text>{{ commitItem.commit.author.name }}</text>
+        <template is="wemark" data="{{...wemark}}"></template>
+      </view>
+      <view class="cell-after__full"></view>
+    </view>
+  </view>
+</view>

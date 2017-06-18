@@ -2,13 +2,13 @@
   <text>{{errText}}</text>
   <view class="cells cells-notop">
     <view class="cell-before__full"></view>
-    <view wx:for="{{branchs}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="cell">
+    <navigator url="/pages/commits/commits?user={{query.user}}&name={{query.name}}&branch={{item.name}}" wx:for="{{branchs}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="cell">
       <view class="cell-before"></view>
       <view class="cell-bd cell-primary">{{item.name}}</view>
       <view class="cell-ft">
         <text class="iconfont icon-202-copy"></text>
       </view>
-    </view>
+    </navigator>
     <view class="cell-after__full"></view>
   </view>
 </view>
