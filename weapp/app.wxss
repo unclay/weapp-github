@@ -5,6 +5,7 @@
 @import './common/wxss/flex.wxss';
 @import './common/wxss/panel.wxss';
 @import './common/wxss/icon.wxss';
+@import './common/wxss/loadmore.wxss';
 
 @import './components/search-bar/index.wxss';
 

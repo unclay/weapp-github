@@ -3,11 +3,27 @@ const {
 } = require('../../common/js/promise_api.js');
 
 Page({
+  onPullDownRefresh: function(){
+    wx.stopPullDownRefresh()
+  },
+  onReachBottom() {
+    if (this.data.apiSwitch) {
+      if (this.data.commits.length === 0) {
+        this.addPage(1);
+        this.getCommits(false);
+      } else if (this.data.commits[this.data.commits.length - 1].parents.length > 0) {
+        this.addPage(1);
+        this.getCommits(false);
+      }
+    }
+  },
   data: {
     query: {
+      page: 1,
     },
     commits: [],
     errText: '',
+    apiSwitch: true,
   },
   showError(err) {
     const setdata = {
@@ -16,18 +32,30 @@ Page({
     this.setData(setdata);
     wx.hideLoading();
   },
-  getCommits: function (callback) {
-    const self  = this;
-    // 每次请求提示加载中
-    wx.showLoading({
-      title: 'loading...'
+  apiSwitch(value) {
+    this.setData({
+      apiSwitch: value,
     });
+  },
+  addPage(val) {
+    this.data.query.page += Number(val);
+    this.setData({
+      query: this.data.query,
+    });
+  },
+  getCommits: function (needLoad = true, callback) {
+    const self  = this;
+    if (!self.data.apiSwitch) {
+      return false;
+    }
+    self.apiSwitch(false);
     request({
       url: 'https://www.unclay.com/cache',
       data: {
         url: `https://api.github.com/repos/${self.data.query.user}/${self.data.query.name}/commits`,
         expire: 60 * 60,
         sha: self.data.query.branch,
+        page: self.data.query.page,
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {
@@ -59,13 +87,14 @@ Page({
         }
       }
       self.setData({
-        commits: res.data,
+        commits: this.data.commits.concat(res.data),
       });
-      wx.hideLoading();
       callback && callback(null);
+      self.apiSwitch(true);
     }).catch((err) => {
       self.showError(err && err.errMsg);
       callback && callback(err);
+      self.apiSwitch(true);
     });
   },
   onLoad({ name, user, branch }) {

@@ -1,4 +1,5 @@
 <view>
+  
   <view class="commits-list">
     <navigator url="/pages/commit-item/commit-item?user={{query.user}}&name={{query.name}}&sha={{item.sha}}" wx:for="{{commits}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="commits-item">
       <view class="commits-item__hd">
@@ -11,5 +12,12 @@
         <view class="commits-item__desc">{{ item.commit.message }}</view>
       </view>
     </navigator>
+  </view>
+  <view wx:if="{{commits.length === 0 || (commits.length > 0 && commits[commits.length - 1].parents.length > 0)}}" class="loadmore">
+    <text class="loading"></text>
+    <view class="loadmore__tips">正在加载</view>
+  </view>
+  <view wx:if="{{commits.length > 0 && commits[commits.length - 1].parents.length === 0}}" class="loadmore loadmore_line">
+    <view class="loadmore__tips">我是有底线的人</view>
   </view>
 </view>
