@@ -8,12 +8,34 @@ Page({
     query: {
       user: '',
       name: '',
+      page: 1,
     },
     events: [],
+    eventsEnd: false,
+    apiSwitch: true,
   },
   onPullDownRefresh() {
     this.getEvents(() => {
       wx.stopPullDownRefresh();
+    });
+  },
+  onReachBottom() {
+    if (this.data.apiSwitch) {
+      if (!this.data.eventsEnd) {
+        this.addPage(1);
+        this.getEvents();
+      }
+    }
+  },
+  apiSwitch(value) {
+    this.setData({
+      apiSwitch: value,
+    });
+  },
+  addPage(val) {
+    this.data.query.page += Number(val);
+    this.setData({
+      query: this.data.query,
     });
   },
   showError(err) {
@@ -25,53 +47,61 @@ Page({
   },
   getEvents(callback) {
     const self  = this;
-    // 每次请求提示加载中
-    wx.showLoading({
-      title: 'loading...'
-    });
+    if (!self.data.apiSwitch) {
+      return false;
+    }
+    self.apiSwitch(false);
     const repos = `${self.data.query.user}/${self.data.query.name}`;
     request({
       url: 'https://www.unclay.com/cache',
       data: {
         url: `https://api.github.com/repos/${repos}/events`,
+        page: self.data.query.page,
         expire: 60 * 60
       }
     }).then((res) => {
+      if (res.data.status === 422) {
+        return this.setData({
+          eventsEnd: true,
+        });
+      }
       if (res.data.status && res.data.response) {
         return self.showError(res.data.response.text)
       }
-      self.setData({
-        events: res.data.map((item) => {
-          const now = parseInt(new Date().getTime() / 1000, 10);
-          const create = parseInt(new Date(item.created_at).getTime() / 1000, 10);
-          const diff = now - create;
-          const num = 0;
-          const type = '';
-          if (diff < 60) {
-            item.after_long_time = `${diff} seconds ago`;
-          } else if (diff < 60 * 60) {
-            item.after_long_time = `${Math.floor(diff / 60)} minutes ago`;
-          } else if (diff < 24 * 60 * 60) {
-            item.after_long_time = `${Math.floor(diff / 60 / 60)} hours ago`;
-          } else if (diff < 30 * 24 * 60 * 60) {
-            if (Math.floor(diff / 60 / 60 / 24) === 1) {
-              item.after_long_time = '1 days ago';
-            } else {
-              item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} days ago`;
-            }
-          } else if (diff < 12 * 30 * 24 * 60 * 60) {
-            item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} months ago`;
+      const events = res.data.map((item) => {
+        const now = parseInt(new Date().getTime() / 1000, 10);
+        const create = parseInt(new Date(item.created_at).getTime() / 1000, 10);
+        const diff = now - create;
+        const num = 0;
+        const type = '';
+        if (diff < 60) {
+          item.after_long_time = `${diff} seconds ago`;
+        } else if (diff < 60 * 60) {
+          item.after_long_time = `${Math.floor(diff / 60)} minutes ago`;
+        } else if (diff < 24 * 60 * 60) {
+          item.after_long_time = `${Math.floor(diff / 60 / 60)} hours ago`;
+        } else if (diff < 30 * 24 * 60 * 60) {
+          if (Math.floor(diff / 60 / 60 / 24) === 1) {
+            item.after_long_time = '1 days ago';
           } else {
-            item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} months ago`;
+            item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} days ago`;
           }
-          return item;
-        }),
+        } else if (diff < 12 * 30 * 24 * 60 * 60) {
+          item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} months ago`;
+        } else {
+          item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} months ago`;
+        }
+        return item;
       });
-      wx.hideLoading();
+      self.setData({
+        events: this.data.events.concat(events),
+      });
       callback && callback(null);
+      self.apiSwitch(true);
     }).catch((err) => {
       self.showError(err && err.errMsg);
       callback && callback(err);
+      self.apiSwitch(true);
     });
   },
   onLoad({ name, user }) {

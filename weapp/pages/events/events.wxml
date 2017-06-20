@@ -120,9 +120,13 @@
         <view class="events-main__content">{{item.payload.pull_request.title}}</view>
       </view>
     </view>
+  </view>
 
-
-
-    
+  <view wx:if="{{!eventsEnd}}" class="loadmore">
+    <text class="loading"></text>
+    <view class="loadmore__tips">正在加载</view>
+  </view>
+  <view wx:if="{{eventsEnd}}" class="loadmore loadmore_line">
+    <view class="loadmore__tips">我是有底线的人</view>
   </view>
 </view>
