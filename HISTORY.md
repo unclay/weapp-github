@@ -11,3 +11,4 @@ version | content
 1.4.2 | Fiex URI malformed and optimize wemark UI and add previewImage in issue
 1.5.0 | add branch page and commits(include commit-item) page
 1.5.1 | add loadmore and commits,events page add pager
+1.6.0 | add pull request

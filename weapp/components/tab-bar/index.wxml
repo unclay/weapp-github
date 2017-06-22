@@ -1,0 +1,9 @@
+<template name="tab-bar">
+  <view class="tab-bar">
+    <view data-type="open" class="tab-bar__item {{ tabBar.state === 'open' ? 'active' : '' }}" bindtap="onTabBarClick">
+      <view class="tab-bar__item-divide"></view>
+      Open
+    </view>
+    <view data-type="closed" class="tab-bar__item {{ tabBar.state === 'closed' ? 'active' : '' }}" bindtap="onTabBarClick">Closed</view>
+  </view>
+</template>

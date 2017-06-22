@@ -8,11 +8,11 @@
 * [x] `Repository` `1.2.0`
 * [x] `Readme` `1.2.0`
 * [x] `Profile` `1.3.0`
-* [x] `Events` `1.3.0`
+* [x] `Events` `1.3.0` `1.5.1`
 * [x] `Issues` `1.4.0`
 * [x] `Issue-item` `1.4.1`
 * [x] `Branch` `1.5.0`
-* [x] `Commits` `1.5.0`
+* [x] `Commits` `1.5.0` `1.5.1`
 * [ ] `Pull Requests`
 * [ ] `Source`
 * [ ] `Search Repository`

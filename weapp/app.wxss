@@ -8,6 +8,7 @@
 @import './common/wxss/loadmore.wxss';
 
 @import './components/search-bar/index.wxss';
+@import './components/tab-bar/index.wxss';
 
 page {
   background-color: #efeff4;

@@ -171,7 +171,7 @@
           <text class="iconfont icon-202-copy"></text>
         </view>
       </navigator>
-      <view class="cell">
+      <navigator url="/pages/pulls/pulls?name={{query.name}}&user={{query.user}}" class="cell">
         <view class="cell-before__bd"></view>
         <view class="cell-hd">
           <text class="iconfont icon-flowbranch1157840easyiconnet"></text>
@@ -180,10 +180,9 @@
           Pull Requests
         </view>
         <view class="cell-ft">
-          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
-      </view>
+      </navigator>
       <view class="cell">
         <view class="cell-before__bd"></view>
         <view class="cell-hd">

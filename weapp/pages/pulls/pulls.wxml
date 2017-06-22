@@ -1,0 +1,22 @@
+<view class="pulls">
+  <import src="../../components/search-bar/index.wxml"/>
+  <template is="search-bar" data="{{searchBar: searchBar}}"></template>
+
+  <import src="../../components/tab-bar/index.wxml"/>
+  <template is="tab-bar" data="{{tabBar: tabBar}}"></template>
+
+  <view>{{ errText }}</view>
+
+  <view class="pulls-list">
+    <view wx:for="{{ pulls }}" wx:key="item.id" wx:for-index="index" wx:for-item="item" class="pulls-item">
+      <view class="pulls-item__hd">
+        <text wx:if="{{ !item.user.avatar_url }}" class="iconfont icon-github pulls-github"></text>
+        <image wx:else class="pulls-item_avatar" src="{{ item.user.avatar_url }}"></image>
+      </view>
+      <view class="pulls-item__bd">
+        <view class="pulls-item_title">{{ item.title }}</view>
+        <view class="pulls-item_subtitle">{{ item.after_long_time }}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+page {
+  height: 100%;
+}
+.pulls {
+  min-height: 100%;
+  background-color: #fff;
+}
+
+.pulls-list {
+
+}
+.pulls-item {
+  display: flex;
+}
+.pulls-github {
+  display: inline-block;
+  margin-top: -6rpx;
+  width: 60rpx;
+  height: 60rpx;
+  font-size: 60rpx;
+}
+.pulls-item__hd {
+  padding-top: 14rpx;
+  padding-left: 14rpx;
+}
+.pulls-item__bd {
+  flex: 1;
+  border-bottom: 1px solid #eee;
+  padding: 14rpx 0 14rpx 14rpx;
+}
+.pulls-item_avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+}
+.pulls-item_title {
+  color: #008dd8;
+  font-size: 35rpx;
+  line-height: 40rpx;
+}
+.pulls-item_subtitle {
+  font-size: 26rpx;
+  height: 26rpx;
+  line-height: 20rpx;
+  padding-top: 10rpx;
+  color: #333;
+}
