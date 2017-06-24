@@ -1,6 +1,7 @@
 .loadmore {
   width: 65%;
-  margin: 20rpx auto;
+  margin: 20rpx auto 0;
+  padding-bottom: 20rpx;
   line-height: 20rpx;
   font-size: 28rpx;
   text-align: center;

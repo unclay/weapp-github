@@ -45,3 +45,11 @@ page {
   padding-top: 10rpx;
   color: #333;
 }
+
+.loadmore-pulls.loadmore_line {
+  margin: 40rpx auto 0;
+  padding-bottom: 40rpx;
+}
+.loadmore-pulls .loadmore__tips{
+  background-color: #fff;
+}

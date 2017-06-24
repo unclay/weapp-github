@@ -8,7 +8,7 @@
   <view>{{ errText }}</view>
 
   <view class="pulls-list">
-    <view wx:for="{{ pulls }}" wx:key="item.id" wx:for-index="index" wx:for-item="item" class="pulls-item">
+    <view wx:for="{{ pullsFilter.length > 0 ? pullsFilter : pulls }}" wx:key="item.id" wx:for-index="index" wx:for-item="item" class="pulls-item">
       <view class="pulls-item__hd">
         <text wx:if="{{ !item.user.avatar_url }}" class="iconfont icon-github pulls-github"></text>
         <image wx:else class="pulls-item_avatar" src="{{ item.user.avatar_url }}"></image>
@@ -18,5 +18,13 @@
         <view class="pulls-item_subtitle">{{ item.after_long_time }}</view>
       </view>
     </view>
+  </view>
+
+  <view wx:if="{{ !pullsEnd && pullsFilter.length === 0 }}" class="loadmore">
+    <text class="loading"></text>
+    <view class="loadmore__tips">正在加载</view>
+  </view>
+  <view wx:if="{{ pullsEnd && pulls.length >= 10 && pullsFilter.length === 0 }}" class="loadmore-pulls loadmore loadmore_line">
+    <view class="loadmore__tips">我是有底线的人</view>
   </view>
 </view>

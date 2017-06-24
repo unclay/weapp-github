@@ -7,9 +7,15 @@
   flex: 1;
   text-align: center;
   font-size: 30rpx;
+  height: 40rpx;
+  line-height: 44rpx;
   color: #0366d6;
   padding: 10rpx 0;
   border-bottom: 2rpx solid #dfe2e5;
+}
+.tab-bar__item .loading {
+  margin-top: -4rpx;
+  margin-left: 4rpx;
 }
 .tab-bar__item-divide {
   position: absolute;

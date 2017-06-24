@@ -1,9 +1,11 @@
 <template name="tab-bar">
   <view class="tab-bar">
-    <view data-type="open" class="tab-bar__item {{ tabBar.state === 'open' ? 'active' : '' }}" bindtap="onTabBarClick">
+    <view data-type="open" class="tab-bar__item {{ tabBar.state === 'open' ? 'active' : '' }}" bindtap="__onTabBarClick">
       <view class="tab-bar__item-divide"></view>
-      Open
+      Open<text wx:if="{{ tabBar.state === 'open' && tabBar.loading }}" class="loading"></text>
     </view>
-    <view data-type="closed" class="tab-bar__item {{ tabBar.state === 'closed' ? 'active' : '' }}" bindtap="onTabBarClick">Closed</view>
+    <view data-type="closed" class="tab-bar__item {{ tabBar.state === 'closed' ? 'active' : '' }}" bindtap="__onTabBarClick">
+      Closed<text wx:if="{{ tabBar.state === 'closed' && tabBar.loading }}" class="loading"></text>
+    </view>
   </view>
 </template>

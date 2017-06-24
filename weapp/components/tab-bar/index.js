@@ -12,10 +12,16 @@ function init(options) {
     return self;
   }
 
-  if (!self.onTabBarClick) {
-    self.onTabBarClick = (e) => {
-      console.warn('no define onTabBarClick');
+  self.__onTabBarClick = (e) => {
+    if (self.data.tabBar.loading) {
+      return false;
     }
+    if (!self.onTabBarClick) {
+      console.warn('no define onTabBarClick');
+    } else {
+      self.onTabBarClick(e);
+    }
+    
   }
 
   return self;

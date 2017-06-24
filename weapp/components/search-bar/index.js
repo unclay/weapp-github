@@ -1,36 +1,42 @@
 function init(options) {
   const self = this;
+  const setSearchBarData = (key, value) => {
+    self.data.searchBar[key] = value;
+    self.setData({
+      searchBar: self.data.searchBar,
+    });
+  }
   self.data.searchBar = self.data.searchBar || {}
   self.setData({
     searchBar: self.data.searchBar || {},
   });
 
   self.params = (options = {}) => {
-    self.data.searchBar.type = options.type || '';
-    self.setData({
-      searchBar: self.data.searchBar || {},
-    });
+    setSearchBarData('type', options.type || '');
     return self;
   }
 
-  if (!self.onSearchBarChange) {
-    self.onSearchBarChange = (e) => {
+  self.__onSearchBarChange = (e) => {
+    setSearchBarData('value', e.detail.value);
+    if (!self.onSearchBarChange) {
       console.warn('no define onSearchBarChange');
+    } else {
+      self.onSearchBarChange(e);
     }
   }
 
   self.onFocus = (e) => {
-    self.data.searchBar.focus = true;
-    self.setData({
-      searchBar: self.data.searchBar,
-    });
+    setSearchBarData('focus', true);
   };
 
-  self.onSearchBarCancel = (e) => {
-    self.data.searchBar.focus = false;
-    self.setData({
-      searchBar: self.data.searchBar,
-    });
+  self.__onSearchBarCancel = (e) => {
+    setSearchBarData('focus', false);
+    setSearchBarData('value', '');
+    if (!self.onSearchBarCancel) {
+      console.warn('no define onSearchBarCancel');
+    } else {
+      self.onSearchBarCancel(e);
+    }
   }
 
   return self;
