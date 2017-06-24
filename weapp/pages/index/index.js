@@ -30,6 +30,7 @@ Page({
         range: language,
       }
     },
+    unclay: '',
     trendingList: [],
     trendingNullText: 'Loading...',
     errText: ''
@@ -68,6 +69,7 @@ Page({
     });
     // 每次请求清空trending
     self.setData({
+      unclay: '',
       trendingList: [],
       trendingNullText: 'Loading...'
     })
@@ -81,6 +83,7 @@ Page({
       if (!res.data || res.data.length === 0) {
         wx.hideLoading();
         return self.setData({
+          unclay: '',
           trendingList: [],
           trendingNullText: 'We couldn’t find any trending repositories.'
         })
@@ -134,6 +137,11 @@ Page({
       }
       self.setData({
         errText: '',
+        unclay: {
+          full_name: 'unclay/weapp-github',
+          avatar_url: '../../common/img/avatar.png',
+          description: 'Github weapp development plan',
+        },
         trendingList: res.data.map((item) => {
           if (item.stargazers_count >= 1000) {
             item.stargazers_count = fomatFloat(item.stargazers_count/1000, 1) + 'k'

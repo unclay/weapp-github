@@ -1,0 +1,39 @@
+<view>
+  <view class="plan-list">
+    <view class="plan-title first">
+      Production Info
+    </view>
+    <view data-index="{{index}}" wx:for="{{ product }}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="plan-item">
+      <view class="plan-content">
+        {{item.name}}
+      </view>
+      <view class="plan-desc">
+        {{ item.version }} | {{ item.date }}
+      </view>
+    </view>
+
+    <view class="plan-title">
+      Plan Info
+    </view>
+    <view data-index="{{index}}" wx:for="{{ plan }}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="plan-item">
+      <view class="plan-content">
+        {{item.name}}
+      </view>
+      <view class="plan-desc">
+        {{ item.version }} | {{ item.date }}
+      </view>
+    </view>
+
+    <view class="plan-title">
+      Future Info
+    </view>
+    <view data-index="{{index}}" wx:for="{{ future }}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="plan-item">
+      <view class="plan-content">
+        {{item.name}}
+      </view>
+      <view class="plan-desc">
+        {{ item.version }} | {{ item.date }}
+      </view>
+    </view>
+  </view>
+</view>

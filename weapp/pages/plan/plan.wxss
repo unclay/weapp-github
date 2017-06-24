@@ -1,0 +1,54 @@
+.plan-list {
+  
+}
+.plan-item {
+  padding: 20rpx 20rpx;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+.plan-title {
+  background-color: #fff;
+  margin-top: 20rpx;
+  font-size: 36rpx;
+  line-height: 36rpx;
+  padding: 20rpx;
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+  color: #0366d6;
+  color: #333;
+}
+.plan-title.first {
+  margin-top: 0;
+}
+.plan-content {
+  line-height: 36rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+.plan-desc {
+  height: 26rpx;
+  line-height: 26rpx;
+  font-size: 26rpx;
+  color: #999;
+  padding-top: 16rpx;
+}
+
+/* 自定义select页面 */
+.page-select {
+  padding: 0 0 0 30rpx;
+}
+.page-select__item {
+  display: flex;
+  font-size: 30rpx;
+  color: #444;
+  border-bottom: 2rpx solid #eee;
+  align-items: center;
+}
+.page-select__item-name {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.page-select__item .active {
+  margin-right: 20rpx;
+}

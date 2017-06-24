@@ -11,7 +11,8 @@
     "pages/branch/branch",
     "pages/commits/commits",
     "pages/commit-item/commit-item",
-    "pages/pulls/pulls"
+    "pages/pulls/pulls",
+    "pages/plan/plan"
   ],
   "window":{
     "backgroundTextStyle":"dark",
