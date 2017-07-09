@@ -19,6 +19,11 @@ page {
   padding-top: 16rpx;
   font-size: 30rpx;
 }
+.events-gitcommit {
+  display: inline-block;
+  padding-top: 12rpx;
+  font-size: 36rpx;
+}
 .events-issue-opened {
   display: inline-block;
   padding-top: 14rpx;

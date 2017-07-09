@@ -13,7 +13,9 @@
 * [x] `Issue-item` `1.4.1`
 * [x] `Branch` `1.5.0`
 * [x] `Commits` `1.5.0` `1.5.1`
-* [ ] `Pull Requests`
+* [x] `Pull Requests` `1.6.0`
+* [x] `Profile Events` `1.7.0`
+* [x] `Profile Repos` `1.8.0`
 * [ ] `Source`
 * [ ] `Search Repository`
 * [ ] `Login By Github`

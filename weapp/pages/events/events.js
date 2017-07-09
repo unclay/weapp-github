@@ -51,11 +51,16 @@ Page({
       return false;
     }
     self.apiSwitch(false);
-    const repos = `${self.data.query.user}/${self.data.query.name}`;
+    let url = '';
+    if (self.data.query.name) {
+      url = `/repos/${self.data.query.user}/${self.data.query.name}/events`;
+    } else {
+      url = `/users/${self.data.query.user}/events`;
+    }
     request({
       url: 'https://www.unclay.com/cache',
       data: {
-        url: `https://api.github.com/repos/${repos}/events`,
+        url: `https://api.github.com${url}`,
         page: self.data.query.page,
         expire: 60 * 60
       }
@@ -90,6 +95,10 @@ Page({
           item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} months ago`;
         } else {
           item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} months ago`;
+        }
+        // branch
+        if (item.payload && item.payload.ref) {
+          item.payload.branch = item.payload.ref.replace('refs/heads/', '');
         }
         return item;
       });

@@ -60,6 +60,26 @@
       </view>
     </view>
 
+    <!-- push -->
+    <view wx:if="{{item.type === 'PushEvent'}}" class="events-tips">
+      <view class="events-tips__hd">
+        <text class="iconfont icon-gitcommit events-gitcommit"></text>
+      </view>
+      <view class="events-tips__bd events-tips__primary">{{item.after_long_time}}</view>
+    </view>
+    <view wx:if="{{item.type === 'PushEvent'}}" class="events-main">
+      <view class="events-main__hd">
+        <text wx:if="{{!item.actor.avatar_url}}" class="iconfont icon-github events-github"></text>
+        <image wx:else class="events-main__avatar" src="{{item.actor.avatar_url}}"></image>
+      </view>
+      <view class="events-main__bd events-main__primary">
+        <view class="events-main__title">
+          <navigator url="/pages/profile/profile?user={{query.user}}" class="events-main__url">{{item.actor.login}}</navigator> pushed to <text class="events-main__url">{{item.payload.branch}}</text> in <text class="events-main__url">{{item.repo.name}}</text>
+        </view>
+        <view class="events-main__content">{{item.payload.commits[0].message}}</view>
+      </view>
+    </view>
+
     <!-- issue -->
     <view wx:if="{{item.type === 'IssuesEvent'}}" class="events-tips">
       <view class="events-tips__hd">

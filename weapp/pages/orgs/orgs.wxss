@@ -1,0 +1,22 @@
+.orgs-hd {
+  position: relative;
+  display: flex;
+  height: 42rpx;
+  width: 60rpx;
+}
+.orgs-avatar {
+  position: absolute;
+  top: 50%;
+  left: -14rpx;
+  transform: translateY(-50%);
+  display: inline-block;
+  width: 50rpx;
+  height: 50rpx;
+}
+.orgs .cell-before__bd {
+  left: 90rpx;
+}
+.orgs .cell-bd {
+  line-height: 22px;
+  height: 22px;
+}

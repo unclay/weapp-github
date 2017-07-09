@@ -2,6 +2,18 @@ Page({
   data: {
     product: [
       {
+        version: ['v1.7.0'],
+        name: 'add profile\'s events',
+        date: '2017-07-09',
+        status: 1,
+      },
+      {
+        version: ['v1.6.0'],
+        name: 'add pull request; optimization search-bar,tab-bar; add plan page',
+        date: '2017-06-26',
+        status: 1,
+      },
+      {
         version: ['v1.6.0'],
         name: 'add pull request; optimization search-bar,tab-bar; add plan page',
         date: '2017-06-26',
@@ -71,15 +83,9 @@ Page({
     ],
     plan: [
       {
-        version: ['v1.7.0'],
-        name: 'add profile\'s events',
-        date: '2017-07-02',
-        status: 1,
-      },
-      {
         version: ['v1.8.0'],
         name: 'add profile\'s repository',
-        date: '2017-07-09',
+        date: '2017-07-16',
         status: 1,
       }
     ],
@@ -87,19 +93,19 @@ Page({
       {
         version: ['v2.x.x'],
         name: 'search all repository',
-        date: '2017-07-16',
+        date: '2017-07-23',
         status: 1,
       },
       {
         version: ['v2.x.x'],
         name: 'wexin bind github',
-        date: '2017-07-30',
+        date: '2017-08-07',
         status: 1,
       },
       {
         version: ['v2.x.x'],
         name: 'view code',
-        date: '2017-07-23',
+        date: '2017-07-30',
         status: 1,
       }
     ]

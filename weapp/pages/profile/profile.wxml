@@ -25,7 +25,7 @@
 
     <view class="cells" style="display: block;">
       <view class="cell-before__full"></view>
-      <view class="cell">
+      <navigator url="/pages/events/events?user={{query.user}}" class="cell">
         <view class="cell-before__bd"></view>
         <view class="cell-hd">
           <text class="iconfont icon-11"></text>
@@ -34,10 +34,9 @@
           Events
         </view>
         <view class="cell-ft">
-          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
-      </view>
+      </navigator>
       <view class="cell">
         <view class="cell-before__bd"></view>
         <view class="cell-hd">

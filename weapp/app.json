@@ -12,7 +12,8 @@
     "pages/commits/commits",
     "pages/commit-item/commit-item",
     "pages/pulls/pulls",
-    "pages/plan/plan"
+    "pages/plan/plan",
+    "pages/orgs/orgs"
   ],
   "window":{
     "backgroundTextStyle":"dark",

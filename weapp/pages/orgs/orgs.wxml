@@ -1,0 +1,16 @@
+<view>
+  <text>{{errText}}</text>
+  <view class="orgs cells cells-notop">
+    <view class="cell-before__full"></view>
+    <view class="cell" wx:for="{{orgs}}" wx:key="unique" wx:for-index="index" wx:for-item="item">
+      <view class="cell-hd orgs-hd">
+        <image class="orgs-avatar" src="{{ item.avatar_url }}"></image>
+      </view>
+      <view class="cell-bd cell-primary"><view class="cell-before__bd"></view>{{ item.login }}</view>
+      <view class="cell-ft">
+        <text class="iconfont icon-202-copy"></text>
+      </view>
+    </view>
+    <view class="cell-after__full"></view>
+  </view>
+</view>
