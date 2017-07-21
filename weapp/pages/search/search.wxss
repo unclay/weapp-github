@@ -1,0 +1,64 @@
+.search-bar-box {
+  border-bottom: 1px solid #fff;
+}
+.search-github {
+  display: inline-block;
+  width: 70rpx;
+  height: 70rpx;
+  font-size: 70rpx;
+}
+.search-main {
+  display: flex;
+  background-color: #fff;
+}
+.search-main__primary {
+  flex: 1;
+}
+.search-main__hd {
+  width: 70rpx;
+  padding: 0 14rpx;
+  
+}
+.search-main__avatar {
+  margin-top: 14rpx;
+  width: 70rpx;
+  height: 70rpx;
+}
+.search-main__bd {
+  min-height: 60rpx;
+  font-size: 30rpx;
+  border-bottom: 2rpx solid #ddd;
+  padding-bottom: 10rpx;
+}
+.search-main__bd.last {
+  border-bottom: 0;
+}
+.search-main__title {
+  font-weight: 400;
+  line-height: 1.3;
+  padding: 12rpx 10rpx 6rpx 0;
+  color: #0366d6;
+}
+.search-main__content {
+  padding-right: 20rpx;
+  word-break: break-all;
+  font-size: 30rpx;
+  font-weight: 300;
+}
+.search-main__tag {
+  padding-top: 10rpx;
+  color: #999;
+}
+.search-main__tag-item {
+  float: left;
+  width: 130rpx;
+  font-size: 24rpx;
+  color: #586069;
+}
+.search-main__tag-item.last {
+  width: auto;
+}
+.search-main__tag-item .iconfont {
+  margin-right: 10rpx;
+  font-size: 24rpx;
+}

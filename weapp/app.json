@@ -13,7 +13,8 @@
     "pages/commit-item/commit-item",
     "pages/pulls/pulls",
     "pages/plan/plan",
-    "pages/orgs/orgs"
+    "pages/orgs/orgs",
+    "pages/search/search"
   ],
   "window":{
     "backgroundTextStyle":"dark",

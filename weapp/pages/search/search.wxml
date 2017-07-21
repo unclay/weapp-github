@@ -1,0 +1,41 @@
+<view>
+  <import src="../../components/search-bar/index.wxml"/>
+  <template is="search-bar" data="{{searchBar: searchBar}}"></template>
+  <view>
+    <navigator url="/pages/repo/repo?name={{item.name}}&user={{item.owner.login}}" wx:for="{{repos}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="search-main">
+      <view class="search-main__hd">
+        <text wx:if="{{ !item.owner.avatar_url}}" class="iconfont icon-github search-github"></text>
+        <image wx:else class="search-main__avatar" src="{{ item.owner.avatar_url }}"></image>
+      </view>
+      <view class="search-main__bd search-main__primary {{ index + 1 === repos.length ? 'last' : '' }}">
+        <view class="search-main__title">
+          {{ item.name }}
+        </view>
+        <view class="search-main__content">
+          {{ item.description }}
+        </view>
+        <view class="search-main__tag">
+          <view class="search-main__tag-item">
+            <text class="iconfont icon-xingxing"></text>
+            <text>{{ item.stargazers_count }}</text>
+          </view>
+          <view class="search-main__tag-item">
+            <text class="iconfont icon-flowbranch1157840easyiconnet"></text>
+            <text>{{ item.forks }}</text>
+          </view>
+          <view class="search-main__tag-item last">
+            <text class="iconfont icon-icon2"></text>
+            <text>{{ item.owner.login }}</text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view wx:if="{{!searchEnd}}" class="loadmore">
+    <text class="loading"></text>
+    <view class="loadmore__tips">正在加载</view>
+  </view>
+  <view wx:if="{{searchEnd}}" class="loadmore loadmore_line">
+    <view class="loadmore__tips">我是有底线的人</view>
+  </view>
+</view>

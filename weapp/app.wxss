@@ -18,4 +18,5 @@ page {
   font-size: 28rpx;
   font-weight: 600;
   color: #6a737d;
+  padding-left: 10rpx;
 }

@@ -2,6 +2,12 @@ Page({
   data: {
     product: [
       {
+        version: ['v1.8.0'],
+        name: 'search all repository',
+        date: '2017-07-21',
+        status: 1,
+      },
+      {
         version: ['v1.7.0'],
         name: 'add profile\'s events',
         date: '2017-07-09',
@@ -83,19 +89,13 @@ Page({
     ],
     plan: [
       {
-        version: ['v1.8.0'],
+        version: ['v1.9.0'],
         name: 'add profile\'s repository',
-        date: '2017-07-16',
+        date: '2017-08-01',
         status: 1,
       }
     ],
     future: [
-      {
-        version: ['v2.x.x'],
-        name: 'search all repository',
-        date: '2017-07-23',
-        status: 1,
-      },
       {
         version: ['v2.x.x'],
         name: 'wexin bind github',

@@ -36,8 +36,6 @@ Page({
       this.setData({
         language: this.data.language
       })
-    searchBar.init.apply(this).params({
-      type: '',
-    });
+    searchBar.init.apply(this);
   }
 })

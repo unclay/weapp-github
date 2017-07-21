@@ -2,8 +2,24 @@
 
 
 .trending__null {
-  border-bottom:1rpx solid #E5E5E5;
-  font-size:32rpx;
-  padding:60rpx 30rpx;
-  color:#666;
+  border-bottom: 1rpx solid #E5E5E5;
+  font-size: 32rpx;
+  padding: 60rpx 30rpx;
+  color: #666;
+}
+
+.fixed-search {
+  position: fixed;
+  bottom: 40rpx;
+  right: 20rpx;
+  width: 120rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 300;
+  border-radius: 120rpx;
+  box-shadow: 0 0 6rpx #ccc;
+  background-color: #fff;
+  color: #555;
 }

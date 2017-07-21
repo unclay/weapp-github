@@ -15,9 +15,9 @@
 * [x] `Commits` `1.5.0` `1.5.1`
 * [x] `Pull Requests` `1.6.0`
 * [x] `Profile Events` `1.7.0`
-* [x] `Profile Repos` `1.8.0`
+* [x] `Search All Repository` `1.8.0`
+* [ ] `Profile Repos` 
 * [ ] `Source`
-* [ ] `Search Repository`
 * [ ] `Login By Github`
 
 # 访问方式
