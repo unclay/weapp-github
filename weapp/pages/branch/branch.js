@@ -28,7 +28,7 @@ Page({
       title: 'loading...'
     });
     request({
-      url: 'https://www.unclay.com/cache',
+      url: 'https://api.unclay.com/cache',
       data: {
         url: `https://api.github.com/repos/${self.data.query.user}/${self.data.query.name}/branches`,
         expire: 60 * 60

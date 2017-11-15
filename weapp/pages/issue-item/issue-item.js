@@ -37,7 +37,7 @@ Page({
       title: 'loading...'
     });
     request({
-      url: 'https://www.unclay.com/cache',
+      url: 'https://api.unclay.com/cache',
       data: {
         url: `https://api.github.com/repos/${self.data.query.user}/${self.data.query.name}/issues/${self.data.query.number}`,
         expire: 60 * 60
@@ -83,7 +83,7 @@ Page({
         issueitem: item,
       });
       return request({
-        url: 'https://www.unclay.com/cache',
+        url: 'https://api.unclay.com/cache',
         data: {
           url: `https://api.github.com/repos/${self.data.query.user}/${self.data.query.name}/issues/${self.data.query.number}/comments`,
           expire: 60 * 60

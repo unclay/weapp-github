@@ -61,7 +61,7 @@ Page({
       url: 'http://trending.codehub-app.com/v2/trending',
       since: since.range[since.index].value,
       language: language.state.value,
-      expire: 60 * 60
+      expire: 60 * 60 * 12
     };
     // 每次请求提示加载中
     wx.showLoading({
@@ -74,7 +74,7 @@ Page({
       trendingNullText: 'Loading...'
     })
     request({
-      url: 'https://www.unclay.com/cache',
+      url: 'https://api.unclay.com/cache',
       data: query
     }).then((res) => {
       if (res.data.status && res.data.response) {

@@ -14,5 +14,6 @@ version | content
 1.6.0 | add pull request and optimization search-bar、tab-bar and add plan page
 1.7.0 | add user events
 1.8.0 | add search all repo page
+1.8.1 | replace proxy apiurl
 
 

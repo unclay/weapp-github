@@ -53,7 +53,7 @@ Page({
       title: 'loading...'
     });
     request({
-      url: 'https://www.unclay.com/cache',
+      url: 'https://api.unclay.com/cache',
       data: {
         url: `https://api.github.com/repos/${repos}`,
         expire: 60 * 60
@@ -74,7 +74,7 @@ Page({
         repo: res.data
       })
       return request({
-        url: 'https://www.unclay.com/cache',
+        url: 'https://api.unclay.com/cache',
         data: {
           url: `https://api.github.com/repos/${repos}/branches`,
           expire: 60 * 60

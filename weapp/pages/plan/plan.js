@@ -91,7 +91,6 @@ Page({
       {
         version: ['v1.9.0'],
         name: 'add profile\'s repository',
-        date: '2017-08-01',
         status: 1,
       }
     ],
@@ -99,13 +98,11 @@ Page({
       {
         version: ['v2.x.x'],
         name: 'wexin bind github',
-        date: '2017-08-07',
         status: 1,
       },
       {
         version: ['v2.x.x'],
         name: 'view code',
-        date: '2017-07-30',
         status: 1,
       }
     ]
