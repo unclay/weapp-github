@@ -2,47 +2,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New ThinkJS Application</title>
+<title>Github源</title>
 <style>
-*{padding: 0;margin: 0;font-size: 16px;line-height: 20px;font-family: arial;}
-a, a:visited{color:#337ab7;text-decoration: none;}
-header{padding: 70px 0 70px 0;background-color: #4A6495}
-h1{font-size: 36px;color:#fff;font-weight: normal;}
-code{  padding: 2px 4px;font-size: 90%;color: #c7254e;background-color: #f9f2f4;border-radius: 4px;}
-.content{width: 1000px;margin: auto}
-.wrap{width: 1000px;margin: auto}
-.content{margin-top: 80px;}
-.list{width: 800px;}
-.list .item{position: relative;padding-left: 70px;margin-top: 50px;}
-.list .item .step{position: absolute;width: 36px;height: 36px;top:-3px;left:0;border: 5px solid #4A6495;border-radius: 23px;text-align: center;line-height: 36px;}
-.list .item h2{font-size: 24px;font-weight: normal;}
-.list .item p{line-height: 30px;margin-top: 10px}
+*{padding: 0;margin: 0;font-size: 18px;line-height: 50px;font-family: arial;}
+.shell {
+  margin: 10px auto;
+  padding: 20px;
+  width: 400px;
+}
+.header-inner {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.header-inner img {
+  display: inline-block;
+  width: 36px;
+  border-radius: 36px;
+  vertical-align: middle;
+}
+.header-inner span {
+  padding-left: 5px;
+  display: inline-block;
+  height: 36px;
+  line-height: 38px;
+  vertical-align: middle;
+  font-size: 16px;
+  color: #585858;
+}
+img { width: 30px; border-radius: 100%; }
+.sectence12 { font-size: 12px; }
+.sectence14 { font-size: 14px; }
+.sectence16 { font-size: 16px; }
+.sectence18 { font-size: 18px; }
+.sectence20 { font-size: 20px; }
+.sectence22 { font-size: 22px; }
+.sectence24 { font-size: 24px; }
+.sectence26 { font-size: 26px; }
+.sectence28 { font-size: 28px; }
+.sectence30 { font-size: 30px; }
 </style>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.runtime.min.js"></script>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>A New App Created By ThinkJS</h1>
+
+  <div class="shell">
+    <div class="header-inner">
+      <img src="static/img/logo.jpg" alt="">
+      <span>Github源／小程序</span>
     </div>
-  </header>
-  <div class="content">
-    <div class="list">
-      <div class="item">
-        <div class="step">1</div>
-        <h2>Generate Files</h2>
-        <p>Run <code>thinkjs</code> command to create module, controler, model, service and so on. </p>
-      </div>
-      <div class="item">
-        <div class="step">2</div>
-        <h2>Documentation</h2>
-        <p>ThinkJS has online html documents. visit <a href="https://thinkjs.org/doc.html">https://thinkjs.org/doc.html</a>.</p>
-      </div>
-      <div class="item">
-        <div class="step">3</div>
-        <h2>GitHub</h2>
-        <p>If you have some questions, please <a href="https://github.com/thinkjs/thinkjs/issues">new a issue</a>.</p>
-      </div>
-    </div>
+    <p class="sectence12">作者很懒</p>
+    <p class="sectence14">什么都没有留下</p>
+    <p class="sectence16">如需授权小程序Github源</p>
+    <p class="sectence18">请点击<a href="https://github.com/login/oauth/authorize?client_id=49905c62293d06a24998&state=githubyuan&redirect_uri=http%3A%2F%2F127.0.0.1%3A8100%2Foauth">链接</a>前往Github授权登录</p>
   </div>
 </body>
 </html>
