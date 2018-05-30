@@ -50,4 +50,5 @@
   </view>
 
   <navigator url="/pages/search/search" hover-class="none" class="fixed-search">搜索</navigator>
+  
 </view>

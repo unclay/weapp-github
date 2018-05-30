@@ -1,3 +1,4 @@
 module.exports = [
-  ['/oauth', 'rest']
+  ['/oauth', 'rest'],
+  [/\/api\/.*/i, 'rest']
 ];

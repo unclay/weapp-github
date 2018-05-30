@@ -62,7 +62,7 @@ Page({
     });
   },
   onLoad({ user }) {
-    this.data.query.user = user;
+    this.data.query.user = user || 'unclay';
     this.setData({
       query: this.data.query,
     });

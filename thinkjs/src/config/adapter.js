@@ -4,6 +4,8 @@ const fileSession = require('think-session-file');
 const mysql = require('think-model-mysql');
 const {Console, File, DateFile} = require('think-logger3');
 const path = require('path');
+
+const fileDb = require('../extend/think-db-file');
 const isDev = think.env === 'development';
 
 /**
@@ -105,5 +107,22 @@ exports.logger = {
     pattern: '-yyyy-MM-dd',
     alwaysIncludePattern: true,
     filename: path.join(think.ROOT_PATH, 'logs/app.log')
+  }
+};
+
+/**
+ * db adapter config
+ * @type {Object}
+ */
+exports.db = {
+  type: 'file',
+  common: {
+    timeout: 24 * 60 * 60 * 1000 // millisecond
+  },
+  file: {
+    handle: fileDb,
+    dbPath: path.join(think.ROOT_PATH, 'localdb'), // absoulte path is necessarily required
+    pathDepth: 1,
+    gcInterval: 24 * 60 * 60 * 1000 // gc interval
   }
 };

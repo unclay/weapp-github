@@ -30,6 +30,7 @@ node_modules/
 output/
 output.tar.gz
 
+localdb/
 runtime/
 app/
 

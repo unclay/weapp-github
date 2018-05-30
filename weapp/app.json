@@ -14,7 +14,9 @@
     "pages/pulls/pulls",
     "pages/plan/plan",
     "pages/orgs/orgs",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/me/me",
+    "pages/login/login"
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -23,5 +25,19 @@
     "navigationBarTextStyle":"#fff",
     "backgroundColor": "#efeff4",
     "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "Home",
+      "iconPath": "common/img/icon/tabbar_home.png",
+      "selectedIconPath": "common/img/icon/tabbar_homeHL.png"
+    }, {
+      "pagePath": "pages/login/login",
+      "text": "Me",
+      "iconPath": "common/img/icon/tabbar_me.png",
+      "selectedIconPath": "common/img/icon/tabbar_meHL.png"
+    }],
+    "selectedColor": "#09bb07"
   }
 }

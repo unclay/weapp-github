@@ -1,5 +1,6 @@
 /**app.wxss**/
 
+@import './common/wxss/weui.wxss';
 @import './common/wxss/button_tab.wxss';
 @import './common/wxss/cell.wxss';
 @import './common/wxss/flex.wxss';
