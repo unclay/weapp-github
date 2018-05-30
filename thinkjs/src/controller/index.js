@@ -1,7 +1,9 @@
 const Base = require('./base.js');
 
 module.exports = class extends Base {
-  indexAction() {
-    return this.display();
+  async indexAction() {
+    const user = await this.session('user');
+    this.assign('user', user);
+    return this.display('index_index');
   }
 };

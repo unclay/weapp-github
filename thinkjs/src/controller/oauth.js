@@ -42,6 +42,6 @@ module.exports = class extends BaseRest {
       id: res.id,
       avatar_url: res.avatar_url
     });
-    return this.redirect(`http://127.0.0.1:8100/user/${res.login}`);
+    return this.redirect('http://127.0.0.1:8100');
   }
 };

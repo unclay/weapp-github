@@ -4,11 +4,16 @@
 <meta charset="UTF-8">
 <title>Github源</title>
 <style>
-*{padding: 0;margin: 0;font-size: 18px;line-height: 50px;font-family: arial;}
+* { padding: 0; margin: 0; }
 .shell {
   margin: 10px auto;
   padding: 20px;
   width: 400px;
+}
+.box {
+  font-size: 18px;
+  line-height: 50px;
+  font-family: arial;
 }
 .header-inner {
   margin-bottom: 20px;
@@ -29,7 +34,7 @@
   font-size: 16px;
   color: #585858;
 }
-img { width: 30px; border-radius: 100%; }
+.header-inner img { width: 30px; border-radius: 100%; }
 .sectence12 { font-size: 12px; }
 .sectence14 { font-size: 14px; }
 .sectence16 { font-size: 16px; }
@@ -40,20 +45,42 @@ img { width: 30px; border-radius: 100%; }
 .sectence26 { font-size: 26px; }
 .sectence28 { font-size: 28px; }
 .sectence30 { font-size: 30px; }
+.card {
+  width: 120px;
+  box-shadow: 0 0 9px #888;
+}
+.card img {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+.card .name {
+  padding: 8px;
+}
 </style>
 <script src="https://cdn.bootcss.com/vue/2.4.2/vue.runtime.min.js"></script>
 </head>
 <body>
 
   <div class="shell">
-    <div class="header-inner">
-      <img src="static/img/logo.jpg" alt="">
-      <span>Github源／小程序</span>
+    <div class="box">
+      <div class="header-inner">
+        <img src="static/img/logo.jpg" alt="">
+        <span>Github源／小程序</span>
+      </div>
+      <p class="sectence12">作者很懒</p>
+      <p class="sectence14">什么都没有留下</p>
+      <p class="sectence16">如需授权小程序Github源</p>
+      <p class="sectence18">请点击<a href="https://github.com/login/oauth/authorize?client_id=49905c62293d06a24998&state=githubyuan&redirect_uri=http%3A%2F%2F127.0.0.1%3A8100%2Foauth">链接</a>前往Github授权登录</p>
+      
     </div>
-    <p class="sectence12">作者很懒</p>
-    <p class="sectence14">什么都没有留下</p>
-    <p class="sectence16">如需授权小程序Github源</p>
-    <p class="sectence18">请点击<a href="https://github.com/login/oauth/authorize?client_id=49905c62293d06a24998&state=githubyuan&redirect_uri=http%3A%2F%2F127.0.0.1%3A8100%2Foauth">链接</a>前往Github授权登录</p>
+    {% if user %}
+    <div class="card" style="">
+      <img src="{{user.avatar_url}}" alt="">
+      <p class="name">{{user.login}}</p>
+    </div>
+    {% endif %}
   </div>
 </body>
 </html>
