@@ -25,6 +25,15 @@
   font-size: 140rpx;
   background-color:#fff;
 }
+.profile-login {
+  display: block;
+  font-size: 36rpx;
+  line-height: 36rpx;
+  font-weight: 400;
+  color: #fff;
+  border: 0;
+  background-color: transparent;
+}
 .profile-name {
   display: block;
   font-size: 36rpx;

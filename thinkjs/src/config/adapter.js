@@ -57,14 +57,16 @@ exports.session = {
   type: 'file',
   common: {
     cookie: {
-      name: 'thinkjs'
+      name: 'weapp-github',
+      expires: new Date(Date.now() + 7 * 86400000)
       // keys: ['werwer', 'werwer'],
       // signed: true
     }
   },
   file: {
     handle: fileSession,
-    sessionPath: path.join(think.ROOT_PATH, 'runtime/session')
+    sessionPath: path.join(think.ROOT_PATH, 'runtime/session'),
+    maxAge: 7 * 86400 * 1000
   }
 };
 

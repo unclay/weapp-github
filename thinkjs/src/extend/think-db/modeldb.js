@@ -66,7 +66,8 @@ async function thinkDb(table, name, value, config) {
     newValue = Object.assign(value, {
       id: tableInfo.auto_id
     });
-    return Promise.resolve(instance.set(`table_${table}_${name}`, newValue));
+    await Promise.resolve(instance.set(`table_${table}_${name}`, newValue));
+    return newValue;
   }
   newValue = Object.assign(value, {
     id: tableValue.id

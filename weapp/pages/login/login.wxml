@@ -2,13 +2,16 @@
   <view class="profile">
     <view class="profile-hd">
       <view class="profile-avatar__default">
-        <text wx:if="{{!profileAvatarLoaded}}" class="iconfont icon-github profile-avatar__default-icon"></text>
-        <image class="profile-avatar" src="{{profile.avatar_url}}" bindload="onAvatarUrlLoad"></image>
+        <text wx:if="{{ !userInfo.avatarUrl}}" class="iconfont icon-github profile-avatar__default-icon"></text>
+        <image class="profile-avatar" src="{{ userInfo.avatarUrl }}" bindload="onAvatarUrlLoad"></image>
       </view>
-      <view class="profile-name">Sign in to GitHub</view>
+      <view class="profile-name">{{ userInfo.nickName || 'GitHub' }}</view>
+    </view>
+    <view wx:if="{{!loginInfo}}" class="weui-btn-area">
+      <button type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
     </view>
   </view>
-  <view class="weui-tab">
+  <view wx:if="{{loginInfo}}" class="weui-tab">
     <view class="weui-navbar">
       <block wx:for-items="{{tabs}}" wx:key="{{index}}">
         <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">

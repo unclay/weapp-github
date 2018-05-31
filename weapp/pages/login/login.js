@@ -5,7 +5,9 @@ Page({
     tabs: ["Token", "Qrcode"],
     activeIndex: 1,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    loginInfo: '',
+    userInfo: {}
   },
   onLoad: function () {
     const self = this;
@@ -20,20 +22,67 @@ Page({
     wx.setNavigationBarTitle({
       title: 'Sign'
     });
+    this._login((login) => {
+      this._getUserInfo((res) => {
+        this.setLoginInfo(res, login.code)
+      })
+    })
+  },
+  setLoginInfo(data, code) {
+    console.log(data);
+    if (data.userInfo) {
+      this.setData({ userInfo: data.userInfo });
+      delete data.userInfo;
+      this.setData({ loginInfo: data });
+      if (code) {
+        wx.request({
+          method: 'POST',
+          url: 'http://192.168.1.10:8110/api/login',
+          data: {
+            code,
+            rawData: data.rawData,
+            iv: data.iv,
+            signature: data.signature,
+            encryptedData: data.encryptedData,
+          }
+        });
+      }
+    }
+  },
+  _login(callback) {
     wx.login({
       success: function(res) {
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'http://192.168.1.10:8110/api/login',
-            data: {
-              code: res.code
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
+        callback(res)
+      },
+      fail: function(res) {
+        console.log(res);
+        alert('登录失败！' + res.errMsg)
+      },
+    });
+  },
+  _getUserInfo(callback) {
+    wx.getUserInfo({
+      // withCredentials: true,
+      success: function(res) {
+        callback(res)
+      },
+      fail: function(res) {
+        // wx.showModal({
+        //   content: res.errMsg,
+        //   success: function(res) {
+        //     if (res.confirm) {
+        //       console.log('用户点击确定')
+        //     } else if (res.cancel) {
+        //       console.log('用户点击取消')
+        //     }
+        //   }
+        // })
+      },
+    });
+  },
+  bindGetUserInfo: function (ele) {
+    this._login((login) => {
+      this.setLoginInfo(ele.detail, login.code);
     });
   },
   tabClick: function (e) {
@@ -55,4 +104,5 @@ Page({
       }
     });
   },
+  onAvatarUrlLoad() {}
 });
