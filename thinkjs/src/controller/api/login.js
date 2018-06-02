@@ -31,8 +31,10 @@ module.exports = class extends BaseRest {
       id: userInfo.id,
       openid: userInfo.openid
     });
+    const cookie = await this.cookie(this.config('cookieName'));
     return this.success({
-      id: userInfo.id
+      id: userInfo.id,
+      cookie
     });
   }
 };

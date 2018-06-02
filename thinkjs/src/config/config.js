@@ -11,5 +11,6 @@ module.exports = {
     appSecret: '',
     wxLoginExpires: 7200,
     wxMessageToken: ''
-  }
+  },
+  cookieName: 'weapp-github' // 请与adapter的cookie保持一致
 };
