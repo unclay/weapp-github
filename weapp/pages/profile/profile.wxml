@@ -50,7 +50,7 @@
           <text class="iconfont icon-202-copy"></text>
         </view>
       </view>
-      <view class="cell">
+      <navigator url="/pages/repos/repos?user={{query.user}}" class="cell">
         <view class="cell-before__bd"></view>
         <view class="cell-hd">
           <text class="iconfont icon-repo"></text>
@@ -59,10 +59,9 @@
           Repositories
         </view>
         <view class="cell-ft">
-          <text>@todo</text>
           <text class="iconfont icon-202-copy"></text>
         </view>
-      </view>
+      </navigator>
       <view class="cell">
         <view class="cell-before__bd"></view>
         <view class="cell-hd">

@@ -3,6 +3,7 @@ const searchBar = require('../../components/search-bar/index.js');
 const {
   request,
 } = require('../../common/js/promise_api.js');
+const store = getApp().store;
 
 Page({
   data: {
@@ -59,12 +60,14 @@ Page({
     }
     this.setSubRoot('tabBar', 'loading', true);
     request({
-      url: 'https://api.unclay.com/cache',
+      url: `${store.state.domain}/api/cache`,
       data: {
         url: `https://api.github.com/repos/${self.data.query.user}/${self.data.query.name}/pulls`,
-        expire: 60 * 60,
-        state: this.data.tabBar.state,
-        page: this.data.query.page,
+        expire: 60 * 60 * 1000,
+        query: {
+          state: this.data.tabBar.state,
+          page: this.data.query.page,
+        }
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {

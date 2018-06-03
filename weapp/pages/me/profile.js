@@ -25,7 +25,7 @@ module.exports = {
       });
       wx.hideLoading();
     }).catch((err) => {
-      console.log(err, 28);
+      console.log(err);
     });
   },
 };

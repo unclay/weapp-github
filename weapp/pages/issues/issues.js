@@ -61,11 +61,13 @@ Page({
     });
     const repos = `${self.data.query.user}/${self.data.query.name}`;
     request({
-      url: 'https://api.unclay.com/cache',
+      url: `${store.state.domain}/api/cache`,
       data: {
         url: `https://api.github.com/repos/${repos}/issues`,
-        expire: 60 * 60,
-        state: self.data.query.state,
+        expire: 60 * 60 * 1000,
+        query: {
+          state: self.data.query.state,
+        },
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {

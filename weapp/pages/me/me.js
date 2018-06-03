@@ -7,7 +7,6 @@ const onEvent = require('./on.js');
 const profileEvent = require('./profile.js');
 const app = getApp();
 const store = app.store;
-console.log(store);
 
 Page(Object.assign({
   data: {

@@ -17,7 +17,8 @@
     "pages/search/search",
     "pages/me/me",
     "pages/login-github/login-github",
-    "pages/repos/repos"
+    "pages/repos/repos",
+    "pages/readme/webview"
   ],
   "window":{
     "backgroundTextStyle":"dark",

@@ -19,7 +19,7 @@
 .profile-avatar__default-icon {
   display: inline-block;
   font-size: 140rpx;
-  margin-top:-20rpx;
+  margin-top: -47rpx;
   background-color:#fff;
 }
 .profile-name {

@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
+var store = getApp().store;
 const { since, language, state } = require('../store/index');
 const {
   request,
@@ -57,12 +58,6 @@ Page({
     const self = this;
     const since = this.data.trending.since;
     const language = this.data.trending.language;
-    const query = {
-      url: 'http://trending.codehub-app.com/v2/trending',
-      since: since.range[since.index].value,
-      language: language.state.value,
-      expire: 60 * 60 * 12
-    };
     // 每次请求提示加载中
     wx.showLoading({
       title: 'loading...'
@@ -74,8 +69,15 @@ Page({
       trendingNullText: 'Loading...'
     })
     request({
-      url: 'https://api.unclay.com/cache',
-      data: query
+      url: `${store.state.domain}/api/cache`,
+      data: {
+        url: 'http://trending.codehub-app.com/v2/trending',
+        expire: 12 * 3600 * 1000,
+        query: {
+          since: since.range[since.index].value,
+          language: language.state.value,
+        },
+      },
     }).then((res) => {
       if (res.data.status && res.data.response) {
         return self.showError(res.data.response.text, 'api error')

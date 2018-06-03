@@ -143,7 +143,7 @@
           <text class="iconfont icon-202-copy"></text>
         </view>
       </navigator>
-      <navigator url="/pages/readme/readme?name={{query.name}}&user={{query.user}}" class="cell">
+      <navigator url="/pages/readme/webview?repo={{query.name}}&user={{query.user}}&branch={{repo.default_branch}}" class="cell">
         <view class="cell-before__bd"></view>
         <view class="cell-hd">
           <text class="iconfont icon-shu2"></text>

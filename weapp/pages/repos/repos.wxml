@@ -2,4 +2,11 @@
 <view class="container" style="background-color: #fff;">
   <import src="../../components/repo-list/index.wxml"/>
   <template is="repo-list" data="{{repoList: repoList}}"></template>
+  <view wx:if="{{!reposEnd}}" class="loadmore">
+    <text class="loading"></text>
+    <view class="loadmore__tips">正在加载</view>
+  </view>
+  <view wx:if="{{reposEnd}}" class="loadmore loadmore_line">
+    <view class="loadmore__tips">我是有底线的人</view>
+  </view>
 </view>

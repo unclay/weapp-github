@@ -17,9 +17,8 @@ module.exports = class extends BaseRest {
     if (expire) {
       config.timeout = Number(expire);
     }
-    const apiData = await this.cache(`${url}${field}`, async() => {
+    const apiData = await this.cache(`${url}${field}${body.query}`, async() => {
       const requestUrl = url.match(/\?/) ? `${url}&${qs.stringify(query)}` : `${url}?${qs.stringify(query)}`;
-      console.log(requestUrl);
       const data = await this.fetch(requestUrl, {
         body: qs.stringify(query)
       }).then(res => res.json());

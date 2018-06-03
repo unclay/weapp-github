@@ -2,6 +2,7 @@ const {
   request,
 } = require('../../common/js/promise_api.js');
 const searchBar = require('../../components/search-bar/index.js');
+const store = getApp().store;
 
 Page({
   data: {
@@ -62,13 +63,15 @@ Page({
     });
     self.apiSwitch(false);
     request({
-      url: 'https://api.unclay.com/cache',
+      url: `${store.state.store}/api/ache`,
       data: {
         url: `https://api.github.com/search/repositories`,
-        expire: 60 * 60,
-        q: this.data.query.name,
-        per_page: 10,
-        page: this.data.page,
+        expire: 60 * 60 * 1000,
+        query: {
+          q: this.data.query.name,
+          per_page: 10,
+          page: this.data.page,
+        },
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {

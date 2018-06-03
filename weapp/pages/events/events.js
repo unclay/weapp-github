@@ -58,11 +58,13 @@ Page({
       url = `/users/${self.data.query.user}/events`;
     }
     request({
-      url: 'https://api.unclay.com/cache',
+      url: `${store.state.domain}/api/cache`,
       data: {
         url: `https://api.github.com${url}`,
-        page: self.data.query.page,
-        expire: 60 * 60
+        query: {
+          page: self.data.query.page,
+        },
+        expire: 60 * 60 * 1000
       }
     }).then((res) => {
       if (res.data.status === 422) {

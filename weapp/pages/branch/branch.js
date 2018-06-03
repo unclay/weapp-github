@@ -1,6 +1,7 @@
 const {
   request,
 } = require('../../common/js/promise_api.js');
+const store = getApp().store;
 
 Page({
   data: {
@@ -28,10 +29,10 @@ Page({
       title: 'loading...'
     });
     request({
-      url: 'https://api.unclay.com/cache',
+      url: `${store.state.store}/api/ache`,
       data: {
         url: `https://api.github.com/repos/${self.data.query.user}/${self.data.query.name}/branches`,
-        expire: 60 * 60
+        expire: 60 * 60 * 1000
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {

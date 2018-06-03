@@ -1,6 +1,7 @@
 const {
   request,
 } = require('../../common/js/promise_api.js');
+const store = getApp().store;
 
 Page({
   onPullDownRefresh: function(){
@@ -50,12 +51,14 @@ Page({
     }
     self.apiSwitch(false);
     request({
-      url: 'https://api.unclay.com/cache',
+      url: `${store.state.domain}/api/cache`,
       data: {
         url: `https://api.github.com/repos/${self.data.query.user}/${self.data.query.name}/commits`,
-        expire: 60 * 60,
-        sha: self.data.query.branch,
-        page: self.data.query.page,
+        expire: 60 * 60 * 1000,
+        query: {
+          sha: self.data.query.branch,
+          page: self.data.query.page,
+        }
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {
@@ -78,9 +81,9 @@ Page({
             item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} days ago`;
           }
         } else if (diff < 12 * 30 * 24 * 60 * 60) {
-          item.after_long_time = `${Math.floor(diff / 60 / 60 / 24)} months ago`;
+          item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} months ago`;
         } else {
-          item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30)} years ago`;
+          item.after_long_time = `${Math.floor(diff / 60 / 60 / 24 / 30 / 12)} years ago`;
         }
         if (item.commit.message && item.commit.message.split('\n') && item.commit.message.split('\n').length > 0) {
           item.commit.message = item.commit.message.split('\n')[0];

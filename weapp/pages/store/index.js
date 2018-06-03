@@ -4,8 +4,8 @@ const state = {
   trending: {
     language: language[0],
   },
-  // domain: 'https://www.unclay.com',
-  domain: 'http://192.168.1.10:8110',
+  domain: 'https://api.unclay.com',
+  // domain: 'http://192.168.1.10:8110',
   user: '',
   showWebViewGithubLogin: false,
 };

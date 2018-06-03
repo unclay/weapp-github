@@ -3,6 +3,7 @@ const {
 } = require('../../common/js/promise_api.js');
 const wemark = require('../wemark/wemark.js');
 const atob = require('./atob.js');
+const store = getApp().store;
 Page({
   data: {
     query: {},
@@ -35,10 +36,10 @@ Page({
       title: 'loading...'
     });
     request({
-      url: 'https://api.unclay.com/cache',
+      url: `${store.state.store}/api/ache`,
       data: {
         url: `https://api.github.com/repos/${repos}/readme`,
-        expire: 3000
+        expire: 3600 * 1000
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {

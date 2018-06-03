@@ -53,10 +53,10 @@ Page({
       title: 'loading...'
     });
     request({
-      url: 'https://api.unclay.com/cache',
+      url: `${store.state.domain}/api/cache`,
       data: {
         url: `https://api.github.com/repos/${repos}`,
-        expire: 60 * 60
+        expire: 60 * 60 * 1000
       }
     }).then((res) => {
       if (res.data.status && res.data.response) {
@@ -74,10 +74,10 @@ Page({
         repo: res.data
       })
       return request({
-        url: 'https://api.unclay.com/cache',
+        url: `${store.state.domain}/api/cache`,
         data: {
           url: `https://api.github.com/repos/${repos}/branches`,
-          expire: 60 * 60
+          expire: 60 * 60 * 1000
         }
       });
     }).then((res) => {

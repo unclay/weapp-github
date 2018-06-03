@@ -17,7 +17,7 @@
     </view>
     <view wx:if="{{trendingList.length === 0}}" class="panel__bd trending__null">{{trendingNullText}}</view>
     <view wx:else class="panel__bd">
-      <navigator url="/pages/plan/plan" class="media-box">
+      <!--navigator url="/pages/plan/plan" class="media-box">
         <view class="media-box__bottom-line"></view>
         <view class="media-box__hd">
           <image class="media-box__thumb" src="{{ unclay.avatar_url }}"></image>
@@ -30,7 +30,7 @@
           
           <text class="media-box__desc">{{ unclay.description }}</text>
         </view>
-      </navigator>
+      </navigator-->
       <navigator url="/pages/repo/repo?name={{item.name}}&user={{item.owner.login}}" wx:for="{{trendingList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="media-box">
         <view class="media-box__bottom-line"></view>
         <view class="media-box__hd">
