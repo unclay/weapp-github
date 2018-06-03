@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container" style="background-color: #fff;">
+  <import src="../../components/repo-list/index.wxml"/>
+  <template is="repo-list" data="{{repoList: repoList}}"></template>
+</view>

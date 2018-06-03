@@ -1,0 +1,17 @@
+<template name="repo-list">
+  <view class="repo-list">
+    <navigator url="/pages/repo/repo?name={{item.name}}&user={{item.owner.login}}" wx:for="{{repoList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="media-box">
+      <view class="media-box__bottom-line"></view>
+      <view class="media-box__hd">
+        <image class="media-box__thumb" src="{{item.owner.avatar_url}}"></image>
+      </view>
+      <view class="media-box__bd">
+        <view style="display: flex; padding: 8rpx 0;">
+          <text class="media-box__title">{{item.full_name}}</text>
+          <text class="text_star">{{item.stargazers_count}}★</text>
+        </view>
+        <text class="media-box__desc">{{item.description}}</text>
+      </view>
+    </navigator>
+  </view>
+</template>

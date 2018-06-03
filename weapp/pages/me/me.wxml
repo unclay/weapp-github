@@ -18,4 +18,50 @@
       <button type="primary" bindtap="onBindGithub">绑定Github</button>
     </view>
   </view>
+
+  <view class="profile-bd">
+    <view class="cells cells-notop">
+      <view class="flexbox">
+        <view class="flexbox-border__bottom"></view>
+        <view class="flexbox-item__col2">
+          <view class="flexbox-border__right"></view>
+          <view class="profile-hotspot__value">{{profile.followers >= 0 ? profile.followers : '-'}}</view>
+          <view class="profile-hotspot__hint">Followers</view>
+        </view>
+        <view class="flexbox-item__col2">
+          <view class="profile-hotspot__value">{{profile.following >= 0 ? profile.following : '-'}}</view>
+          <view class="profile-hotspot__hint">Following</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="cells" style="display: block;">
+      <view class="cell-before__full"></view>
+      <navigator url="/pages/events/events?user={{userInfo.github_login}}" class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-11"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Events
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </navigator>
+      <navigator url="/pages/repos/repos?user={{userInfo.github_login}}" class="cell">
+        <view class="cell-before__bd"></view>
+        <view class="cell-hd">
+          <text class="iconfont icon-repo"></text>
+        </view>
+        <view class="cell-bd cell-primary">
+          Repositories
+        </view>
+        <view class="cell-ft">
+          <text class="iconfont icon-202-copy"></text>
+        </view>
+      </navigator>
+      <view class="cell-after__full"></view>
+    </view>
+  </view>
 </view>
