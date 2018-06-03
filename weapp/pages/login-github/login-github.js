@@ -23,7 +23,7 @@ Page({
     // });
     request({
       method: 'POST',
-      url: 'http://192.168.1.10:8110/api/oauth',
+      url: `${store.state.domain}/api/oauth`,
       data: {
         code: data.detail.data[0].code,
         state: data.detail.data[0].state,

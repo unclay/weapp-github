@@ -3,6 +3,7 @@ const {
   request,
 } = require('../../common/js/promise_api.js');
 const app = getApp();
+const store = app.store;
 
 module.exports = {
   onBindGithub () {
@@ -36,7 +37,7 @@ module.exports = {
         info = res;
         return request({
           method: 'POST',
-          url: 'http://192.168.1.10:8110/api/login',
+          url: `${store.state.domain}/api/login`,
           data: {
             code,
             rawData: res.rawData,
@@ -56,7 +57,7 @@ module.exports = {
         if (res && res.errmsg) {
           app.toast(res.errmsg);
         } else {
-          app.toast(String(res));
+          app.toast(JSON.stringify((res)));
         }
       });
   },

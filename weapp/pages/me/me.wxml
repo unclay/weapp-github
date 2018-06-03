@@ -19,7 +19,7 @@
     </view>
   </view>
 
-  <view class="profile-bd">
+  <view wx:if="{{userInfo.github_login}}" class="profile-bd">
     <view class="cells cells-notop">
       <view class="flexbox">
         <view class="flexbox-border__bottom"></view>
