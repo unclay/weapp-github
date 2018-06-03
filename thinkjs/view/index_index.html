@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Github源</title>
 <style>
 * { padding: 0; margin: 0; }
@@ -61,7 +62,7 @@
 </style>
 <script src="https://cdn.bootcss.com/vue/2.4.2/vue.runtime.min.js"></script>
 </head>
-<body>
+<body><script src="https://cdn.bootcss.com/vue/2.4.2/vue.runtime.min.js"></script>
 
   <div class="shell">
     <div class="box">
@@ -76,11 +77,32 @@
       <p class="sectence18">授权登录只做Session处理，用于中转绑定小程序</p>
     </div>
     {% if user %}
-    <div class="card" style="">
+    <div class="header-inner">
       <img src="{{user.avatar_url}}" alt="">
-      <p class="name">{{user.login}}</p>
+      <span>{{user.login}}</span>
+      <p style="margin-top: 10px;">请用小程序：Github源扫码绑定</p>
     </div>
+    <div id="qrcode"></div>
     {% endif %}
+
+    <script src="static/js/qrcode.min.js"></script>
+    <script>
+      var signStr = '{{sign}}';
+      var cookie = '{{cookie}}';
+      function updateQrcode () {
+        var ele = document.querySelector('#qrcode');
+        console.log(ele);
+        new QRCode(ele, {
+          text: signStr,
+        });
+      }
+      if (signStr) {
+        updateQrcode();
+      }
+      if (cookie) {
+        alert(cookie);
+      }
+    </script>
   </div>
 </body>
 </html>

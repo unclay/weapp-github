@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>授权绑定</title>
+</head>
+<body>
+  <!-- <div id="app">
+    <p>{{ href }}</p>
+    <p>{{ test }}</p>
+  </div> -->
+  <!-- <p>授权绑定中，请稍等...</p> -->
+  <!-- <button id="refrush">refrush</button> -->
+  <!-- <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script> -->
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+  <script>
+    function getUrlParam(name) {  
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象  
+      var r = window.location.search.substr(1).match(reg);  // 匹配目标参数  
+      if (r != null) return unescape(r[2]); return null; // 返回参数值  
+    }
+
+    function ready () {
+      var code = getUrlParam('code');
+      var state = getUrlParam('state');
+      console.log(123);
+      // alert(code);
+      wx.miniProgram.postMessage({
+        data: {
+          code: code,
+          state: state
+        }
+      });
+      // wx.miniProgram.navigateBack();
+      wx.miniProgram.switchTab({
+        url: '/pages/me/me'
+      });
+    }
+    
+    if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) {
+      document.addEventListener('WeixinJSBridgeReady', ready, false)
+    } else {
+      ready()
+    }
+        
+    // var vm = new Vue({
+    //   el: '#app',
+    //   data: {
+    //     href: window.location.href,
+    //     test: 123
+    //   },
+    // })
+    // document.querySelector('#refrush').addEventListener('click', function () {
+    //   window.location.href = window.location.href;
+    // }, false);
+  </script>
+</body>
+</html>

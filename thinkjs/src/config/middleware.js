@@ -33,5 +33,15 @@ module.exports = [
     options: {}
   },
   'logic',
+  {
+    handle: 'login',
+    options: {},
+    match: ctx => {
+      if (['/api/login'].indexOf(ctx.url) > -1) {
+        return false;
+      }
+      return true;
+    }
+  },
   'controller'
 ];

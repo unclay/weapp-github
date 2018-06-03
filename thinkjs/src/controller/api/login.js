@@ -26,15 +26,21 @@ module.exports = class extends BaseRest {
     let userInfo = pc.decryptData(encryptedData, iv);
     userInfo.openid = userInfo.openId || userInfo.openid;
     delete userInfo.openId;
-    userInfo = await this.modeldb('weapp_user', userInfo.openid, userInfo);
-    await this.session('weapp_user', {
-      id: userInfo.id,
-      openid: userInfo.openid
+    delete userInfo.watermark;
+    // const weappUserTable = await this.modeldb('user');
+    // return this.success(weappUserTable);
+    const oldUserInfo = await this.modeldb('user', userInfo.openid);
+    // console.log(oldUserInfo);
+    // return this.success(oldUserInfo);
+    userInfo = await this.modeldb('user', userInfo.openid, Object.assign(oldUserInfo || {}, userInfo));
+    await this.session('user', {
+      id: userInfo.id
     });
     const cookie = await this.cookie(this.config('cookieName'));
     return this.success({
+      github: userInfo.github,
       id: userInfo.id,
-      cookie
+      cookie: `${this.config('cookieName')}=${cookie}`
     });
   }
 };

@@ -1,5 +1,21 @@
 <view>
-  <view>
-    adfsfa
+  <view class="profile">
+    <view class="profile-hd">
+      <view class="profile-avatar__default">
+        <text wx:if="{{ !userInfo.avatarUrl}}" class="iconfont icon-github profile-avatar__default-icon"></text>
+        <image
+          class="profile-avatar"
+          src="{{ userInfo.github_avatar_url || userInfo.avatarUrl }}"
+          bindload="onAvatarUrlLoad">
+        </image>
+      </view>
+      <view class="profile-name">{{ userInfo.github_login || userInfo.nickName || 'Github源' }}</view>
+    </view>
+    <view wx:if="{{isWeappLogin}}" class="weui-btn-area">
+      <button type="primary" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
+    </view>
+    <view wx:if="{{isGithubLogin}}" class="weui-btn-area">
+      <button type="primary" bindtap="onBindGithub">绑定Github</button>
+    </view>
   </view>
 </view>

@@ -16,7 +16,7 @@
     "pages/orgs/orgs",
     "pages/search/search",
     "pages/me/me",
-    "pages/login/login"
+    "pages/login-github/login-github"
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -33,7 +33,7 @@
       "iconPath": "common/img/icon/tabbar_home.png",
       "selectedIconPath": "common/img/icon/tabbar_homeHL.png"
     }, {
-      "pagePath": "pages/login/login",
+      "pagePath": "pages/me/me",
       "text": "Me",
       "iconPath": "common/img/icon/tabbar_me.png",
       "selectedIconPath": "common/img/icon/tabbar_meHL.png"

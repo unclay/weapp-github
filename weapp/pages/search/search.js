@@ -21,7 +21,6 @@ Page({
   onReachBottom() {
     if (this.data.apiSwitch) {
       if (!this.data.searchEnd) {
-        console.log(5)
         this.setData({
           page: this.data.page + 1,
         });

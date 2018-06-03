@@ -213,7 +213,6 @@ function parse(md, page, options){
 				loaded: 'loaded',
 			};
 		}
-		console.log(obj, e)
 		this.setData(obj);
 	};
 

@@ -1,0 +1,1 @@
+<web-view bindmessage="onWebMsg" src="https://github.com/login/oauth/authorize?client_id=49905c62293d06a24998&state=githubyuan"></web-view>

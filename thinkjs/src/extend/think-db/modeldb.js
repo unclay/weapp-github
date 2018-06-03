@@ -12,7 +12,7 @@ const debounceInstance = new Debounce();
  * @param {String|Object} config
  */
 async function thinkDb(table, name, value, config) {
-  assert(name && helper.isString(name), 'db.name must be a string');
+  assert(table && helper.isString(table), 'table.name must be a string');
   if (config) {
     config = helper.parseAdapterConfig(this.config('db'), config);
   } else {
@@ -23,14 +23,6 @@ async function thinkDb(table, name, value, config) {
   delete config.handle;
   const instance = new Handle(config);
 
-  // get db
-  if (value === undefined) {
-    return debounceInstance.debounce(`table_${table}_${name}`, () => {
-      return instance.get(`table_${table}_${name}`);
-    });
-  }
-
-  let tableValue;
   let tableInfo = await Promise.resolve(instance.get(`table_${table}`));
   if (!tableInfo) {
     tableInfo = {
@@ -41,13 +33,33 @@ async function thinkDb(table, name, value, config) {
       map: {}
     };
     await Promise.resolve(instance.set(`table_${table}`, tableInfo));
-  } else {
-    tableValue = await Promise.resolve(instance.get(`table_${table}_${name}`));
   }
 
+  // get table
+  if (name === undefined) {
+    return debounceInstance.debounce(`table_${table}`, () => {
+      return instance.get(`table_${table}`);
+    });
+  }
+
+  assert(name && helper.isString(name), 'db.name must be a string');
+  // get db
+  if (value === undefined) {
+    if (name.match(/^id_(\d+)/)) {
+      name = await Promise.resolve(instance.get(`table_${table}_${name}`));
+      if (!name) {
+        return;
+      }
+      name = name.id;
+    }
+    return debounceInstance.debounce(`table_${table}_${name}`, () => {
+      return instance.get(`table_${table}_${name}`);
+    });
+  }
+  const nameValue = await Promise.resolve(instance.get(`table_${table}_${name}`));
   // delete db
   if (value === null) {
-    if (tableValue && tableInfo.length > 0) {
+    if (nameValue && tableInfo.length > 0) {
       tableInfo.length -= 1;
       delete tableInfo.map[name];
       await Promise.resolve(instance.set(`table_${table}`, tableInfo));
@@ -56,9 +68,9 @@ async function thinkDb(table, name, value, config) {
   }
 
   // set db
-  assert(helper.isObject(value), 'db.handle must be a object');
+  assert(helper.isObject(value), 'value must be a object');
   let newValue;
-  if (!tableValue) {
+  if (!nameValue) {
     tableInfo.length += 1;
     tableInfo.auto_id += 1;
     tableInfo.map[name] = tableInfo.auto_id;
@@ -67,10 +79,13 @@ async function thinkDb(table, name, value, config) {
       id: tableInfo.auto_id
     });
     await Promise.resolve(instance.set(`table_${table}_${name}`, newValue));
+    await Promise.resolve(instance.set(`table_${table}_id_${newValue.id}`, {
+      id: name
+    }));
     return newValue;
   }
   newValue = Object.assign(value, {
-    id: tableValue.id
+    id: nameValue.id
   });
   await Promise.resolve(instance.set(`table_${table}_${name}`, newValue));
   return newValue;
