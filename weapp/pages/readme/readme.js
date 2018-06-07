@@ -36,7 +36,7 @@ Page({
       title: 'loading...'
     });
     request({
-      url: `${store.state.store}/api/ache`,
+      url: `${store.state.domain}/api/cache`,
       data: {
         url: `https://api.github.com/repos/${repos}/readme`,
         expire: 3600 * 1000

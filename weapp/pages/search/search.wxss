@@ -62,3 +62,6 @@
   margin-right: 10rpx;
   font-size: 24rpx;
 }
+.search-box .loadmore__tips {
+  background-color: #efeff4;
+}

@@ -16,9 +16,8 @@
 * [x] `Pull Requests` `1.6.0`
 * [x] `Profile Events` `1.7.0`
 * [x] `Search All Repository` `1.8.0`
-* [ ] `Profile Repos` 
-* [ ] `Source`
-* [ ] `Login By Github`
+* [x] `Profile Repos` 2.0.0
+* [x] `Login By Github` 2.0.0
 
 # 访问方式
 小程序搜索：Github源

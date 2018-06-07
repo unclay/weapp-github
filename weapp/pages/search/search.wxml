@@ -1,4 +1,4 @@
-<view>
+<view class="search-box">
   <import src="../../components/search-bar/index.wxml"/>
   <template is="search-bar" data="{{searchBar: searchBar}}"></template>
   <view>

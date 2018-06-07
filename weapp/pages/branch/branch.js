@@ -29,7 +29,7 @@ Page({
       title: 'loading...'
     });
     request({
-      url: `${store.state.store}/api/ache`,
+      url: `${store.state.domain}/api/cache`,
       data: {
         url: `https://api.github.com/repos/${self.data.query.user}/${self.data.query.name}/branches`,
         expire: 60 * 60 * 1000

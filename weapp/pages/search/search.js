@@ -63,7 +63,7 @@ Page({
     });
     self.apiSwitch(false);
     request({
-      url: `${store.state.store}/api/ache`,
+      url: `${store.state.domain}/api/cache`,
       data: {
         url: `https://api.github.com/search/repositories`,
         expire: 60 * 60 * 1000,

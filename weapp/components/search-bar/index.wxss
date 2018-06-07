@@ -49,6 +49,6 @@
   font-size: 24rpx;
   display: inline-flex;
   height: 100%;
-  line-height: 55rpx;
+  line-height: 34rpx;
   vertical-align: middle;
 }
