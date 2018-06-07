@@ -14,9 +14,47 @@
     <view wx:if="{{isWeappLogin}}" class="weui-btn-area">
       <button type="primary" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
     </view>
-    <view wx:if="{{isGithubLogin}}" class="weui-btn-area">
-      <button type="primary" bindtap="onBindGithub">绑定Github</button>
+    <view wx:if="{{isGithubLogin}}" class="weui-tab__content">
+      <view class="weui-cells__title">绑定 Github 引导</view>
+      <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__bd">
+          <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">Setp 1</view>
+            <view class="weui-media-box__desc">电脑打开https://github.com/登录</view>
+          </view>
+          <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">Setp 2</view>
+            <view class="weui-media-box__desc">
+              <view>找到 Settings / Developer settings / Personal access tokens</view>
+            </view>
+          </view>
+          <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">Setp 3</view>
+            <view class="weui-media-box__desc">
+              <view>创建或者使用已有的 Token，贴到下面去</view>
+              <view>或者用扫一扫，扫描通过 Token 生成的二维码</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells__title">通过 Token 绑定 Github</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input value="{{inputVal}}" class="weui-input" placeholder=""/>
+          </view>
+          <view class="weui-cell__ft">
+            <text bindtap="onScanToken" class="scan-token">扫一扫</text>
+          </view>
+        </view>
+      </view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" loading="{{loading}}" bindtap="onBindGithubByToken">绑定Github</button>
+      </view>
     </view>
+    <!-- view wx:if="{{isGithubLogin}}" class="weui-btn-area">
+      <button type="primary" bindtap="onBindGithub">绑定Github</button>
+    </view -->
   </view>
 
   <view wx:if="{{userInfo.github_login}}" class="profile-bd">

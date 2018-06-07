@@ -14,6 +14,8 @@ Page(Object.assign({
     isGithubLogin: false,
     userInfo: {},
     profile: {},
+    inputVal: '',
+    loading: false,
   },
   onLoad() {
     const self = this;

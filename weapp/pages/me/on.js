@@ -49,9 +49,10 @@ module.exports = {
       })
       .then((res) => {
         wx.setStorageSync('cookie', res.data.data.cookie);
-        this.setUserInfo(Object.assign(info.userInfo, {
-          id: res.data.data.id,
-        }));
+        this.onLoad();
+        // this.setUserInfo(Object.assign(info.userInfo, {
+        //   id: res.data.data.id,
+        // }));
       })
       .catch((res) => {
         if (res && res.errmsg) {
@@ -60,5 +61,39 @@ module.exports = {
           app.toast(JSON.stringify((res)));
         }
       });
+  },
+  onScanToken() {
+    proxy('scanCode')
+      .then((data) => {
+        if (data.result) {
+          this.setData({
+            inputVal: data.result
+          });
+        } else {
+          alert(data.errMsg);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  },
+  onBindGithubByToken() {
+    this.setData({
+      loading: true
+    });
+    request({
+      method: 'POST',
+      url: `${store.state.domain}/api/token`,
+      data: {
+        token: this.data.inputVal
+      }
+    }).then((res) => {
+      this.setData({
+        loading: false
+      });
+      this.onLoad();
+    }).catch((err) => {
+      console.error(err);
+    });
   },
 };

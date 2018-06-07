@@ -34,7 +34,8 @@ module.exports = class extends BaseRest {
     // return this.success(oldUserInfo);
     userInfo = await this.modeldb('user', userInfo.openid, Object.assign(oldUserInfo || {}, userInfo));
     await this.session('user', {
-      id: userInfo.id
+      id: userInfo.id,
+      github_id: userInfo.github ? userInfo.github.id : ''
     });
     const cookie = await this.cookie(this.config('cookieName'));
     return this.success({

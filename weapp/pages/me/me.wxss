@@ -67,4 +67,6 @@
   font-size: 28rpx;
   font-weight: 300;
 }
-
+.scan-token {
+  color: #179B16;
+}
