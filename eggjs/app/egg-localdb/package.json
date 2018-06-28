@@ -1,0 +1,7 @@
+{
+  "name": "egg-localdb",
+  "version": "0.0.1",
+  "eggPlugin": {
+    "name": "localdb"
+  }
+}

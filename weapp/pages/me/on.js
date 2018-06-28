@@ -37,14 +37,24 @@ module.exports = {
         info = res;
         return request({
           method: 'POST',
-          url: `${store.state.domain}/api/login`,
+          // url: `${store.state.domain}/api/login`,
+          url: `http://127.0.0.1:7001/graphql`,
           data: {
-            code,
-            rawData: res.rawData,
-            iv: res.iv,
-            signature: res.signature,
-            encryptedData: res.encryptedData,
-          },
+            query: `
+mutation {
+  login(code: "${code}", rawData: "${encodeURIComponent(res.rawData)}", iv: "${res.iv}", signature: "${res.signature}", encryptedData: "${res.encryptedData}") {
+    nickName
+  }
+}
+            `,
+          }
+          // data: {
+          //   code,
+          //   rawData: res.rawData,
+          //   iv: res.iv,
+          //   signature: res.signature,
+          //   encryptedData: res.encryptedData,
+          // },
         });
       })
       .then((res) => {

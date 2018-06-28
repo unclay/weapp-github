@@ -1,0 +1,17 @@
+type Mutation {
+  test(name: String, openId: String): Test
+  # Login
+  login(code: String, rawData: String, iv: String, signature: String, encryptedData: String): Login
+}
+
+type Login {
+  nickName: String
+  name: String
+  github: String
+  id: String
+  cookie: String
+}
+
+type Test {
+  name: String
+}

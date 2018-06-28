@@ -1,0 +1,9 @@
+type User {
+  name: String
+}
+type Cookie {
+  count: Int
+}
+type Session {
+  count: Int
+}

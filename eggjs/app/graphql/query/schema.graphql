@@ -1,0 +1,6 @@
+type Query {
+  user: User
+  cookie: Cookie
+  session: Session,
+  login: User,
+}
