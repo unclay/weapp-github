@@ -1,7 +1,5 @@
 'use strict';
-const path = require('path');
-const FileStore = require('../../extend/file-store');
-const session = new FileStore(path.resolve(__dirname, '../../../localdb'), 'session');
+// const path = require('path');
 
 module.exports = {
   Query: {
@@ -16,20 +14,6 @@ module.exports = {
       ctx.cookies.set('count', ++count);
       return {
         count,
-      };
-    },
-    session(root, options, ctx) {
-      // let count = ctx.session.count || 0;
-      // ctx.session.count = ++count;
-      let data = session.set(ctx.session.sid, {});
-      // console.log(ctx.session.sid, data);
-      ctx.session.sid = data.id;
-      data = session.set(data.id, {
-        count: data.count ? data.count + 1 : 1,
-      });
-      // console.log(ctx.session.sid, data);
-      return {
-        count: data.count,
       };
     },
   },

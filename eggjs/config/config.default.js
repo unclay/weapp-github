@@ -37,9 +37,16 @@ module.exports = appInfo => {
   };
 
   exports.localdb = {
-    index: {
-      oa: [ 'openId' ],
-    },
+    dbs: [
+      {
+        name: 'github',
+        index: [ 'openId' ],
+      },
+      {
+        name: 'weapp',
+        index: [ 'openId' ],
+      },
+    ],
   };
 
   return config;

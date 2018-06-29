@@ -5,10 +5,18 @@ const Wxcrypty = require('./wxcrypto.js');
 module.exports = {
   Mutation: {
     async test(root, options, ctx) {
-      ctx.localdb('oa').create(options);
-      return {
-        name: options.name,
-      };
+      let data = ctx.app.localdb.getByIndex(options.openId);
+      if (!data) {
+        data = ctx.app.localdb.create(options);
+      }
+      return data;
+    },
+    async test2(root, options, ctx) {
+      let data = ctx.app.localdb.weapp.getByIndex(options.openId);
+      if (!data) {
+        data = ctx.app.localdb.weapp.create(options);
+      }
+      return data;
     },
     async login(root, { code, signature, rawData, encryptedData, iv }, ctx) {
       const rawDataStr = decodeURIComponent(rawData);

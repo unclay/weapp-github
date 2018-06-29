@@ -1,5 +1,6 @@
 type Mutation {
   test(name: String, openId: String): Test
+  test2(name: String, openId: String): Test
   # Login
   login(code: String, rawData: String, iv: String, signature: String, encryptedData: String): Login
 }
@@ -14,4 +15,6 @@ type Login {
 
 type Test {
   name: String
+  openId: String
+  id: Int
 }

@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
+const helper = require('think-helper');
 const { isObject, isNumber } = require('./util');
 
 class VStore {
@@ -9,6 +10,7 @@ class VStore {
     assert(name, 'table name need');
     this.name = name;
     this.id = id || 0;
+    this.indexs = [];
     this.index = index || {};
     this.store = store || {};
   }
@@ -28,6 +30,18 @@ class VStore {
   get(id) {
     return this.store[id];
   }
+  getByIndex(indexName, value) {
+    if (!value) {
+      value = indexName;
+      assert(this.indexs && this.indexs[0], 'default indexName not found');
+      indexName = this.indexs[0];
+    }
+    if (!this.index[indexName] || !this.index[indexName][value]) {
+      return;
+    }
+    const id = this.index[indexName][value];
+    return this.store[id];
+  }
   remove(id) {
     const item = this.store[id];
     delete this.store[id];
@@ -38,6 +52,7 @@ class VStore {
     return this.store[id];
   }
   setIndex(indexs) {
+    this.indexs = indexs;
     for (const key of indexs) {
       this.index[key] = this.index[key] || {};
     }
@@ -73,6 +88,9 @@ class FileStore {
     assert(isNumber(id), 'id must be an number');
     return this.vstore.get(id);
   }
+  getByIndex(indexName, value) {
+    return this.vstore.getByIndex(indexName, value);
+  }
   remove(id) {
     assert(isNumber(id), 'id must be an number');
     return this.vstore.remove(id);
@@ -85,15 +103,19 @@ class FileStore {
   save() {
     clearTimeout(this.saved);
     this.saved = setTimeout(() => {
-      fs.writeFileSync(this.storePath + '/' + this.vstore.name + '/' + this.fileId, JSON.stringify(this.vstore), 'utf-8');
+      fs.writeFileSync(`${this.storePath}/${this.vstore.name}/${this.fileId}`, JSON.stringify(this.vstore), 'utf-8');
     }, 100);
   }
   load() {
-    const path = this.storePath + '/' + this.vstore.name + '/' + this.fileId;
-    if (fs.existsSync(path)) {
-      let data = fs.readFileSync(path, 'utf-8');
-      data = JSON.parse(data);
-      this.vstore = new VStore(data.name, data.id, data.store, data.index);
+    const dirpath = `${this.storePath}/${this.vstore.name}`;
+    const filepath = `${path}/${this.fileId}`;
+    helper.mkdir(dirpath);
+    if (fs.existsSync(filepath)) {
+      let data = fs.readFileSync(filepath, 'utf-8');
+      if (data) {
+        data = JSON.parse(data);
+        this.vstore = new VStore(data.name, data.id, data.store, data.index);
+      }
     }
   }
   index(index) {
